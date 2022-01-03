@@ -7,7 +7,7 @@
 
 
 .title-holder{
-   padding: 5% 5% 5% 5%;
+   padding: 30px 30px 30px 30px;
 }
 
 .app-title {
@@ -18,6 +18,11 @@
     font-family: 'Bebas Neue';
     padding: 0 10px 0 10px;
     margin: 0;
+}
+
+.app-title small {
+    font-family: 'Bebas Neue';
+    font-size: 1.5rem;
 }
 
 nav {
@@ -57,13 +62,14 @@ nav {
 
 .form-handler label {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
 }
 
 .form-handler input {
     width: auto;
     display: inline-block;
-    height: 2rem
+    height: 2rem;
+    border-radius: 0.3rem;
 }
 
 .search-button {
