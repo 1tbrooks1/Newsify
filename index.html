@@ -5,18 +5,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <title></title>
+  <title>NEWS READER</title>
 </head>
 
 <body>
   <header>
+    <div class= "title-holder">
+    <h1 class="app-title">NEWS READER</h1>
+    </div>
+    <nav>
+      <button class="dropdown-menu"><img src="./assets/images/menu-button.png" alt="White hamburger menu icon" style="width:15px;height:15px;" class="hamburger-icon"></button>
+      <div class= "language-selector">Language: 
+        <select class= "dropdown-language">
+          <option id="en">English</option>
+          <option id="es">Spanish</option>
+          <option id="fr">French</option>
+          <option id="it">Italian</option>
+        </select>
+      </div>
+    </nav>
+    <form class= "form-handler">
+
+      <label>Category:</label>
+      <input type="text" id="category" placeholder=""><br>
+
+      <label>Date:</label>
+      <input type="text" id="from-date"> ~ <input type="text" id="to-date"><br>
+
+      <label>Press name(s):</label>
+      <input type="text" id="press-names"><br>
+      <button class= "search-button">Search</button>
+    </form>
   </header>
 
   <main>
+    <div>
+      
+    </div>
   </main>
-
   <script src="./assets/js/script.js"></script>
 </body>
 

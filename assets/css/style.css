@@ -1,0 +1,76 @@
+:root {
+    --primary: #2f2f2f;
+    --secondary: #d4d4d4;
+    --tertiary: #808080;
+  }
+
+
+
+.title-holder{
+   padding: 5% 5% 5% 5%;
+}
+
+.app-title {
+    font-size: 3.5rem;
+    background-color: var(--primary);
+    color: white;
+    display: inline-block;
+    font-family: 'Bebas Neue';
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+
+nav {
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.language-selector {
+    color: white;
+    display: inline-block;
+    margin: 5px 5px 5px 0;
+    display: flex;
+    gap: 5px
+}
+
+.dropdown-language {
+    display: inline-block;
+    width: auto;
+    height: 1.5rem;
+    margin: 0;
+}
+
+.hamburger-icon {
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+}
+
+.form-handler {
+    /* display: none; */
+    color: white;
+    background-color: var(--tertiary);
+    text-align: left;
+    padding: 25px 0px 10px 10px;
+}
+
+.form-handler label {
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.form-handler input {
+    width: auto;
+    display: inline-block;
+    height: 2rem
+}
+
+.search-button {
+    border: 2px solid  var(--secondary);
+    background-color: var(--primary);
+    color: white;
+    font-size: large;
+    padding: 5px;
+    border-radius: 0.3rem;
+}
