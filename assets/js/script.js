@@ -1,6 +1,6 @@
 //user inputs category (general could be default? dropdown), source (typed in: grab value and trim), 
 //language (dropdown)
-    // at least one input otherwise error message
+    // at least one input otherwise error message modal
 //fetches api using appropriate parameters
     //foundation: find display none and put that for homepage, 
     //and then we change that attribute once the input is entered
