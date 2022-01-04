@@ -1,6 +1,7 @@
 //user inputs category (general could be default? dropdown), source (typed in: grab value and trim), 
 //language (dropdown)
     // at least one input otherwise error message modal
+    // this dynamically generates a search history input button on the page
 //fetches api using appropriate parameters
     //foundation: find display none and put that for homepage, 
     //and then we change that attribute once the input is entered
@@ -13,7 +14,15 @@
 //when they click on the article the speaker starts reading the text
     //use modal to change aspects of speaker
     //they can change the voice, pitch, rate, and volume of the speaker
+    // when they save the speaker charcateristics, this also dynamically saves
+    //to homepage
+
     
+
+
+
+
+//wish list
 //they have the option to save the search inputs into a "playlist"
     // pull up new modal from save button 
     // saves to local storage
