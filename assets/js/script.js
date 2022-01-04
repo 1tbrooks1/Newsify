@@ -5,6 +5,7 @@
 //fetches api using appropriate parameters
     //foundation: find display none and put that for homepage, 
     //and then we change that attribute once the input is entered
+
 //modal + calendar: sort dropdown with popularity and/or publish date
     //hidden on homepage, shows up after search in the news title element
     // user clicks on sort and pulls up modal
