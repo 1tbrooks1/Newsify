@@ -33,6 +33,7 @@ nav {
     display: flex;
     justify-content: space-between;
     height: 25px;
+    padding-bottom: 3px;
 }
 
 .hamburger-icon {
@@ -44,7 +45,7 @@ nav {
 }
 
 .audio-control {
-    /* display: none; */
+    display: none;
     color: white;
     background-color: var(--tertiary);
     text-align: left;
@@ -117,3 +118,20 @@ main {
     background-color: var(--secondary);
     padding: 15px 10px 0 10px;
 }
+
+@media only screen and (max-width: 500px) {
+    header h1 small {
+      display: none;
+    }
+    header .title-holder{
+        padding: 0;
+        width: 100%;
+    }
+    header .title-holder h1{
+        width: 100%;
+        text-align: center;
+    }
+    nav {
+        border-top: 1px solid white;
+    }
+  }
