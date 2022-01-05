@@ -19,33 +19,49 @@
     </div>
     <nav>
       <button class="dropdown-menu"><img src="./assets/images/menu-button.png" alt="White hamburger menu icon" style="width:15px;height:15px;" class="hamburger-icon"></button>
-      <div class= "language-selector">Language: 
-        <select class= "dropdown-language">
-          <option id="en">English</option>
-          <option id="es">Spanish</option>
-          <option id="fr">French</option>
-          <option id="it">Italian</option>
-        </select>
-      </div>
     </nav>
-    <form class= "form-handler">
-
-      <label>Category:</label>
-      <input type="text" id="category" placeholder=""><br>
-
-      <label>Date:</label>
-      <input type="text" id="from-date"> ~ <input type="text" id="to-date"><br>
-
-      <label>Press name(s):</label>
-      <input type="text" id="press-names"><br>
-      <button class= "search-button">Search</button>
+    <form class= "audio-control">
+      <div></div>
     </form>
   </header>
+  
 
-  <main>
-    <div>
+  <main class= "grid-x">
+    <div class= "side-bar cell small-12 medium-3">
+      <form class= "card search-form">
+        <div class= "card-header">SEARCH BY ELEMENTS</div>
+        <div class= "card-body">
+          <label>Category:</label>
+          <input type="text" id="category" placeholder="categories">
 
+          <label>Date:</label>
+          <input type="text" id="from-date" placeholder="Date start"><input type="text" id="to-date" placeholder="Date end">
+
+          <label>Press name(s):</label>
+          <input type="text" id="press-names" placeholder="Press Names">
+
+          <label>Language:</label>
+          <select class= "dropdown-language">
+            <option id="en">English</option>
+            <option id="es">Spanish</option>
+            <option id="fr">French</option>
+            <option id="it">Italian</option>
+          </select>
+
+          <button class= "search-button">Search</button>
+        </div>
+      </form>
+      <section class= "card user-presets">
+        <div class= "card-header">USER PRESETS</div>
+        <div class= "card-body">
+        <!-- local storage here -->
+        </div>
+      </section>
     </div>
+
+    <contents class= "article-section cell small-12 medium-9">
+      
+    </contents>
   </main>
   <script src="./assets/js/script.js"></script>
 </body>

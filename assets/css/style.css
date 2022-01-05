@@ -2,12 +2,15 @@
     --primary: #2f2f2f;
     --secondary: #d4d4d4;
     --tertiary: #808080;
-  }
+}
 
-
+body {
+    margin: 0;
+    padding: 0;
+}
 
 .title-holder{
-   padding: 30px 30px 30px 30px;
+    padding: 30px 30px 30px 30px;
 }
 
 .app-title {
@@ -29,47 +32,23 @@ nav {
     background-color: var(--primary);
     display: flex;
     justify-content: space-between;
-}
-
-.language-selector {
-    color: white;
-    display: inline-block;
-    margin: 5px 5px 5px 0;
-    display: flex;
-    gap: 5px
-}
-
-.dropdown-language {
-    display: inline-block;
-    width: auto;
-    height: 1.5rem;
-    margin: 0;
+    height: 25px;
 }
 
 .hamburger-icon {
     width: auto;
     height: auto;
     margin-left: 10px;
+    align-self:flex-end;
+    
 }
 
-.form-handler {
+.audio-control {
     /* display: none; */
     color: white;
     background-color: var(--tertiary);
     text-align: left;
     padding: 25px 0px 10px 10px;
-}
-
-.form-handler label {
-    display: inline-block;
-    font-size: 1.0rem;
-}
-
-.form-handler input {
-    width: auto;
-    display: inline-block;
-    height: 2rem;
-    border-radius: 0.3rem;
 }
 
 .search-button {
@@ -79,4 +58,62 @@ nav {
     font-size: large;
     padding: 5px;
     border-radius: 0.3rem;
+}
+
+main {
+    font-family: 'Bebas Neue';
+    height: 100%
+}
+
+.card {
+    border: 3px solid var(--primary);
+    border-radius: 0.3rem;
+    background-color: var(--secondary);
+    min-height: 10rem;
+}
+
+.card-header {
+    background-color: var(--primary);
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.card-body {
+    padding: 2.5%
+}
+
+.search-form label {
+    font-size: 1.2rem;
+}
+
+.search-form input {
+    width: 100%;
+    height: 2rem;
+    border-radius: 0.3rem;
+}
+
+.dropdown-language {
+    display: inline-block;
+    width: 100%;
+    height: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.search-button {
+    width: 100%;
+}
+
+.article-section{
+    padding: 15px 0 0 15px;
+}
+
+.user-presets {
+    border: 3px solid var(--primary);
+    border-radius: 0.3rem;
+}
+
+.side-bar {
+    background-color: var(--secondary);
+    padding: 15px 10px 0 10px;
 }
