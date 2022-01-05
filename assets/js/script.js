@@ -1,3 +1,84 @@
+// DOM variables
+var sourceEl = document.querySelector("");
+var categoryEL = document.querySelector("");
+var languageEl = document.querySelector("");
+
+
+function sourceInput() {
+
+    let outletChoice = document.querySelector(".source");
+    let outlet = outletChoice.value().trim();
+    console.log(outlet)
+    buildUrl(outlet)
+
+};
+
+function categoryDd() {
+
+    let categoryChoice = document.querySelector(".category");
+    let category = categoryChoice.value;
+    console.log(category)
+    buildUrl(category)
+
+};
+
+function languageDd() {
+
+    let languageChoice = document.querySelector(".language");
+    let language = languageChoice.value;
+    console.log(language)
+    buildUrl(language)
+
+};
+
+function sortList() {
+
+    let sortChoice = document.querySelector(".sort");
+    let sort = sortChoice.value;
+    console.log(sort)
+    buildUrl(sort)
+    
+}
+
+function buildUrl(outlet, category, language, sort) {
+    const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
+    let apiUrl = "http://api.mediastack.com/v1/news?sources=" + outlet + "&categories=" + category + "&languages=" + language + "&sort=" + sort + "&access_key=" + apiKey
+
+    if (outlet || category || language) {
+    fetch(apiUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+            console.log(data);
+            displayArticles(data);    
+        })
+        }
+    })
+}
+ else {
+      
+}
+}
+
+
+
+function displayArticles(data) {
+    for(i=0; i < data.length; i++) {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+searchBtn.addEventListener("click", buildUrl);
+
 //user inputs category (general could be default? dropdown), source (typed in: grab value and trim), 
 //language (dropdown)
     // at least one input otherwise error message modal
