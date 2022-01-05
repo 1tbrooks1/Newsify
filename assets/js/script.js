@@ -40,8 +40,11 @@ function sortList() {
     
 }
 
+// need a separate function for date
+
 function buildUrl(outlet, category, language, sort) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
+    // need to add a date query parameter 
     let apiUrl = "http://api.mediastack.com/v1/news?sources=" + outlet + "&categories=" + category + "&languages=" + language + "&sort=" + sort + "&access_key=" + apiKey
 
     if (outlet || category || language) {
