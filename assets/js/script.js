@@ -52,14 +52,13 @@ function buildUrl(outlet, category, language, sort) {
             displayArticles(data);    
         })
         }
+       // error handling for api call? modal? else if (data.length = 0)
+    })
+    .catch(function(error) {
+        // modal?
     })
 }
- else {
-      
 }
-}
-
-
 
 function displayArticles(data) {
     for(i=0; i < data.length; i++) {
