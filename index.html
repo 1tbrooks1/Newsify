@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -18,11 +18,28 @@
     <h1 class="app-title">NEWSIFY <small>the most recent news collector</small></h1>
     </div>
     <nav>
-      <button class="dropdown-menu"><img src="./assets/images/menu-button.png" alt="White hamburger menu icon" style="width:15px;height:15px;" class="hamburger-icon"></button>
+      <button class="speaker-button" data-open="exampleModal1">🔊</button>
     </nav>
-    <form class= "audio-control">
-      <div></div>
-    </form>
+      <div class= "tiny reveal audio-control" id="exampleModal1" data-reveal>
+        <div>Article reader audio control panel</div>
+        <div class= "control-panel">
+          <div>
+            <label>Volume:</label>
+            <input type="range" min="0" max="10" class="slider" val="volume">
+          </div>
+          <div>
+            <label>Pitch:</label>
+            <input type="range" min="0" max="10" class="slider" val="pitch">
+          </div>
+          <div>  
+          <label>Rate:</label>
+          <input type="range" min="0" max="10" class="slider" val="rate">
+          </div>
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
   </header>
   
 
@@ -32,20 +49,28 @@
         <div class= "card-header">SEARCH BY ELEMENTS</div>
         <div class= "card-body">
           <label>Category:</label>
-          <input type="text" id="category" placeholder="categories">
+          <select class= "dropdown">
+            <option val="general">General</option>
+            <option val="business">Business</option>
+            <option val="entertainment">Entertainment</option>
+            <option val="health">Health</option>
+            <option val="science">Science</option>
+            <option val="sports">Sports</option>
+            <option val="technology">Technology</option>
+          </select>
 
           <label>Date:</label>
-          <input type="text" id="from-date" placeholder="Date start"><input type="text" id="to-date" placeholder="Date end">
+          <input type="date" val="from-date"><input type="date" val="to-date">
 
-          <label>Press name(s):</label>
-          <input type="text" id="press-names" placeholder="Press Names">
+          <label>Press name:</label>
+          <input type="text" val="press-names" placeholder="Press Name">
 
           <label>Language:</label>
-          <select class= "dropdown-language">
-            <option id="en">English</option>
-            <option id="es">Spanish</option>
-            <option id="fr">French</option>
-            <option id="it">Italian</option>
+          <select class= "dropdown">
+            <option val="en">English</option>
+            <option val="es">Spanish</option>
+            <option val="fr">French</option>
+            <option val="it">Italian</option>
           </select>
 
           <button class= "search-button">Search</button>
@@ -53,17 +78,25 @@
       </form>
       <section class= "card user-presets">
         <div class= "card-header">USER PRESETS</div>
-        <div class= "card-body" id="user-preset">
+        <div class= "card-body" val="user-preset">
         <!-- local storage here -->
         </div>
       </section>
     </div>
 
-    <contents class= "article-section cell small-12 medium-9" id="article-page">
+    <contents class= "article-section cell small-12 medium-9" val="article-page">
       <!-- articles go here -->
+
     </contents>
+    <!-- two modals for the alerts / input wrong & network error -->
   </main>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_UNIQUE_KEY"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 
 </html>

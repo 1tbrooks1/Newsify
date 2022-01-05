@@ -31,26 +31,61 @@ body {
 nav {
     background-color: var(--primary);
     display: flex;
-    justify-content: space-between;
-    height: 25px;
-    padding-bottom: 3px;
+    flex-direction: row-reverse;
+    height: 30px;
 }
 
-.hamburger-icon {
-    width: auto;
-    height: auto;
-    margin-left: 10px;
-    align-self:flex-end;
-    
+.speaker-button{
+    font-size: 1.2rem;
+    padding-right: 5px;
 }
 
 .audio-control {
-    display: none;
-    color: white;
-    background-color: var(--tertiary);
-    text-align: left;
-    padding: 25px 0px 10px 10px;
+    font-family: 'Bebas Neue';
+    font-size: 1.2rem;
 }
+
+.control-panel {
+    padding-top: 10px;
+    background-color: var(--secondary);
+    justify-content: space-around;
+    display: flex;
+}
+
+.control-panel label {
+    font-size: 1.0rem;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: var(--tertiary);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
 
 .search-button {
     border: 2px solid  var(--secondary);
@@ -94,12 +129,6 @@ main {
     border-radius: 0.3rem;
 }
 
-.dropdown-language {
-    display: inline-block;
-    width: 100%;
-    height: 1.5rem;
-    margin-bottom: 10px;
-}
 
 .search-button {
     width: 100%;
@@ -135,3 +164,4 @@ main {
         border-top: 1px solid white;
     }
   }
+
