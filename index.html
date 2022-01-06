@@ -73,7 +73,7 @@
             <option value="it">Italian</option>
           </select>
 
-          <button class= "search-button">Search</button>
+          <button class= "search-button" id="search-button">Search</button>
         </div>
       </form>
       <section class= "card user-presets">
@@ -88,8 +88,15 @@
       <!-- articles go here -->
 
     </contents>
+   <div class ="modal" id="no-articles">
+      <div class = "modal-content">
+        <button class="close" id="no-articles-btn">&times;</button>
+        <p>Error: No articles found!</p>
+      </div>
+   </div>
     <!-- two modals for the alerts / input wrong & network error -->
   </main>
+
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_UNIQUE_KEY"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>

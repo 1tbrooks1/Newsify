@@ -1,3 +1,20 @@
+let noArticleModal = document.getElementById("no-articles")
+
+let searchBtn = document.getElementById("search-button")
+
+let noArticlesBtn = document.getElementById("no-articles-btn")
+
+searchBtn.onclick = function(event) {
+    event.preventDefault()
+    noArticleModal.style.display = "block";
+}
+
+noArticlesBtn.onclick = function() {
+    noArticleModal.style.display = "none";
+}
+
+
+
 //user inputs category (general could be default? dropdown), source (typed in: grab value and trim), 
 //language (dropdown)
     // at least one input otherwise error message modal
