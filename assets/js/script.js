@@ -64,7 +64,14 @@ function buildUrl(outlet, category, language, sort, date1, date2) {
                 })
             }
             else { // response failed
-                // modal: error: Articles not found.
+                let noArticleError = document.createElement("modal");
+                noArticleError.textContent = "Error: No articles found."
+                noArticleError.setAttribute("class", "reveal")
+                noArticleError.setAttribute("attribute", "data-open")
+                let vanish = document.createElement("button")
+                vanish.textContent="Close"
+                noArticleError.appendChild(vanish)
+                vanish.setAttribute("attribute", "data-close")
             }
         })
             .catch(function (error) {
