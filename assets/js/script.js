@@ -52,6 +52,7 @@ function buildUrl(outlet, category, language, sort, date1, date2) {
           response.json().then(function (data) {
             console.log(data);
             displayArticles(data);
+            //local storage function call
           });
         } else {
           // response failed
