@@ -20,20 +20,20 @@
     <nav>
       <button class="speaker-button" data-open="exampleModal1">🔊</button>
     </nav>
-      <div class= "tiny reveal audio-control" id="exampleModal1" data-reveal>
+      <div class= "reveal audio-control" id="exampleModal1" data-reveal>
         <div>Article reader audio control panel</div>
         <div class= "control-panel">
           <div>
             <label>Volume:</label>
-            <input type="range" min="0" max="10" class="slider" val="volume">
+            <input type="range" min="0" max="10" class="slider" id="volume">
           </div>
           <div>
             <label>Pitch:</label>
-            <input type="range" min="0" max="10" class="slider" val="pitch">
+            <input type="range" min="0" max="10" class="slider" id="pitch">
           </div>
           <div>  
           <label>Rate:</label>
-          <input type="range" min="0" max="10" class="slider" val="rate">
+          <input type="range" min="0" max="10" class="slider" id="rate">
           </div>
         </div>
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -49,28 +49,28 @@
         <div class= "card-header">SEARCH BY ELEMENTS</div>
         <div class= "card-body">
           <label>Category:</label>
-          <select class= "dropdown">
-            <option val="general">General</option>
-            <option val="business">Business</option>
-            <option val="entertainment">Entertainment</option>
-            <option val="health">Health</option>
-            <option val="science">Science</option>
-            <option val="sports">Sports</option>
-            <option val="technology">Technology</option>
+          <select class= "dropdown-category">
+            <option value="general">General</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="health">Health</option>
+            <option value="science">Science</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
           </select>
 
           <label>Date:</label>
-          <input type="date" val="from-date"><input type="date" val="to-date">
+          <input type="date" id="from-date"><input type="date" id="to-date">
 
           <label>Press name:</label>
-          <input type="text" val="press-names" placeholder="Press Name">
+          <input type="text" id="press-names" placeholder="Press Name">
 
           <label>Language:</label>
-          <select class= "dropdown">
-            <option val="en">English</option>
-            <option val="es">Spanish</option>
-            <option val="fr">French</option>
-            <option val="it">Italian</option>
+          <select class= "dropdown-language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="it">Italian</option>
           </select>
 
           <button class= "search-button">Search</button>
@@ -78,13 +78,13 @@
       </form>
       <section class= "card user-presets">
         <div class= "card-header">USER PRESETS</div>
-        <div class= "card-body" val="user-preset">
+        <div class= "card-body" id="user-preset">
         <!-- local storage here -->
         </div>
       </section>
     </div>
 
-    <contents class= "article-section cell small-12 medium-9" val="article-page">
+    <contents class= "article-section cell small-12 medium-9" value="article-page">
       <!-- articles go here -->
 
     </contents>
