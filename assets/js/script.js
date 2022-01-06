@@ -38,7 +38,7 @@ function sortList() {
     console.log(sort);
     buildUrl(sort);
     displayArticles();
-    
+
 }
 
 function getDate() {
@@ -48,7 +48,7 @@ function getDate() {
     let date1 = from.value();
     let date2 = until.value();
     buildUrl(date1, date2);
-    
+
 }
 
 function buildUrl(outlet, category, language, sort, date1, date2) {
@@ -56,25 +56,28 @@ function buildUrl(outlet, category, language, sort, date1, date2) {
     let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&date=${date1},${date2}&access_key=${apiKey}`
 
     if (outlet || category || language) {
-    fetch(apiUrl).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-            console.log(data);
-            displayArticles(data);    
+        fetch(apiUrl).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    console.log(data);
+                    displayArticles(data);
+                })
+            }
+            else { // response failed
+                // modal: error: Articles not found.
+            }
         })
-        }
-       else // response failed {
-        // modal: error: Articles not found.
-       }
-    })
-    .catch(function(error) {
-        // modal?
-    })
-}
+            .catch(function (error) {
+                // modal: error 404: bad network connection.
+            })
+    }
+    else if (!outlet && !category && !language) {
+        // modal: You must input atleast one of the parameters in the search box.
+    }
 }
 
 function displayArticles(data) {
-    for(i=0; i < data.length; i++) {
+    for (i = 0; i < data.length; i++) {
 
     }
 }
@@ -106,7 +109,7 @@ searchBtn.addEventListener("click", buildUrl);
 //when they click on the article the speaker starts reading the text
     //use modal to change aspects of speaker
     //they can change the voice, pitch, rate, and volume of the speaker
-    
+
 //they have the option to save the search inputs into a "playlist"
     // pull up new modal from save button 
     // saves to local storage
