@@ -8,8 +8,8 @@ function sourceInput() {
 
     let outletChoice = document.querySelector(".source");
     let outlet = outletChoice.value().trim();
-    console.log(outlet)
-    buildUrl(outlet)
+    console.log(outlet);
+    buildUrl(outlet);
 
 };
 
@@ -17,8 +17,8 @@ function categoryDd() {
 
     let categoryChoice = document.querySelector(".category");
     let category = categoryChoice.value;
-    console.log(category)
-    buildUrl(category)
+    console.log(category);
+    buildUrl(category);
 
 };
 
@@ -26,8 +26,8 @@ function languageDd() {
 
     let languageChoice = document.querySelector(".language");
     let language = languageChoice.value;
-    console.log(language)
-    buildUrl(language)
+    console.log(language);
+    buildUrl(language);
 
 };
 
@@ -35,17 +35,25 @@ function sortList() {
 
     let sortChoice = document.querySelector(".sort");
     let sort = sortChoice.value;
-    console.log(sort)
-    buildUrl(sort)
+    console.log(sort);
+    buildUrl(sort);
+    displayArticles();
     
 }
 
-// need a separate function for date
+function getDate() {
 
-function buildUrl(outlet, category, language, sort) {
+    let from = document.querySelector(".from");
+    let until = document.querySelector(".until");
+    let date1 = from.value();
+    let date2 = until.value();
+    buildUrl(date1, date2);
+    
+}
+
+function buildUrl(outlet, category, language, sort, date1, date2) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    // need to add a date query parameter 
-    let apiUrl = "http://api.mediastack.com/v1/news?sources=" + outlet + "&categories=" + category + "&languages=" + language + "&sort=" + sort + "&access_key=" + apiKey
+    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&date=${date1},${date2}&access_key=${apiKey}`
 
     if (outlet || category || language) {
     fetch(apiUrl).then(function(response) {
@@ -55,7 +63,9 @@ function buildUrl(outlet, category, language, sort) {
             displayArticles(data);    
         })
         }
-       // error handling for api call? modal? else if (data.length = 0)
+       else // response failed {
+        // modal: error: Articles not found.
+       }
     })
     .catch(function(error) {
         // modal?
