@@ -22,9 +22,9 @@ function languageDd() {
     buildUrl(language);
 }
 
-// needs to be dropdown in html, wont work possibly like this
+// not sure if diplayarticles will work here 
 function sortList() {
-    let sortChoice = document.querySelector(".control-panel");
+    let sortChoice = document.querySelector(".dropdown-sort");
     let sort = sortChoice.value;
     console.log(sort);
     buildUrl(sort);
@@ -64,21 +64,21 @@ function buildUrl(outlet, category, language, sort, date1, date2) {
             })
             .catch(function (error) {
                 // modal: error 404: bad network connection.
-                // let error1 = document.querySelector("#no-articles")
-                //     error1.setAttribute("class", "reveal")
-                //     // not sure if blank quotes work to set attribute instead of class
-                //     error1.setAttribute("", "data-reveal")
-                //     let error1Btn = document.querySelector("#no-articles-btn")
-                //     error1Btn.setAttribute("", "data-close")
+                let error2 = document.querySelector("#network-error")
+                error2.setAttribute("class", "reveal")
+                // not sure if blank quotes work to set attribute instead of class
+                error2.setAttribute("", "data-reveal")
+                let error2Btn = document.querySelector("#network-error-btn")
+                error2Btn.setAttribute("", "data-close")
             });
     } else if (!outlet && !category && !language) {
         // modal: You must input atleast one of the parameters in the search box.
-        // let error1 = document.querySelector("#no-articles")
-        //             error1.setAttribute("class", "reveal")
-        //             // not sure if blank quotes work to set attribute instead of class
-        //             error1.setAttribute("", "data-reveal")
-        //             let error1Btn = document.querySelector("#no-articles-btn")
-        //             error1Btn.setAttribute("", "data-close")
+        let error3 = document.querySelector("#wrong-input")
+        error3.setAttribute("class", "reveal")
+        // not sure if blank quotes work to set attribute instead of class
+        error3.setAttribute("", "data-reveal")
+        let error3Btn = document.querySelector("#wrong-input-btn")
+        error3Btn.setAttribute("", "data-close")
     }
 }
 
