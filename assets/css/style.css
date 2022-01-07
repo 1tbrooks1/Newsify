@@ -75,6 +75,17 @@ nav {
     font-size: 1.0rem;
 }
 
+.dropdown-sort {
+    width: auto;
+    height: 1.9rem;
+    margin-right: 10px;
+}
+
+.sort-label {
+    color: white;
+    font-size: 1.2rem;
+}
+
 .slider {
     -webkit-appearance: none;
     width: auto;

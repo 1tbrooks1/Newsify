@@ -18,26 +18,14 @@
     <h1 class="app-title">NEWSIFY <small>the most recent news collector</small></h1>
     </div>
     <nav>
-      <button class="sort-button" data-open="Sort-Modal">☰</button>
       <button class="speaker-button" data-open="Audio-Control-Modal">🔊</button>
+        <select class= "dropdown-sort">
+          <option id="Published_desc">Published Descending</option>
+          <option id="published_asc">Published Ascending</option>
+          <option id="popularity">Popularity</option>
+        </select>
+      <label class="sort-label">Sort:</label>
     </nav>
-      <div class= "reveal control-modal" id="Sort-Modal" data-reveal>
-        <div>Article sorting control panel</div>
-        <div class="control-panel">
-            <input type="radio" id="Alph-Asc" class="radio-btn">
-            <label class="sort-label">Alphabetical Ascending</label>
-            <input type="radio" id="Alph-Des" class="radio-btn">
-            <label class="sort-label">Alphabetical Descending</label>
-            <input type="radio" id="Pub-Des" class="radio-btn">
-            <label class="sort-label">Published Ascending</label>
-            <input type="radio" id="Pub-Des" class="radio-btn">
-            <label class="sort-label">Published Descending</label>
-        </div>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
       <div class= "reveal control-modal" id="Audio-Control-Modal" data-reveal>
         <div>Article reader audio control panel</div>
         <div class= "control-panel">
