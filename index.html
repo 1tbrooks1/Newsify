@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -18,36 +18,119 @@
     <h1 class="app-title">NEWSIFY <small>the most recent news collector</small></h1>
     </div>
     <nav>
-      <button class="dropdown-menu"><img src="./assets/images/menu-button.png" alt="White hamburger menu icon" style="width:15px;height:15px;" class="hamburger-icon"></button>
-      <div class= "language-selector">Language: 
-        <select class= "dropdown-language">
-          <option id="en">English</option>
-          <option id="es">Spanish</option>
-          <option id="fr">French</option>
-          <option id="it">Italian</option>
-        </select>
-      </div>
+      <button class="sort-button" data-open="Sort-Modal">☰</button>
+      <button class="speaker-button" data-open="Audio-Control-Modal">🔊</button>
     </nav>
-    <form class= "form-handler">
+      <div class= "reveal control-modal" id="Sort-Modal" data-reveal>
+        <div>Article sorting control panel</div>
+        <div class="control-panel">
+            <input type="radio" id="Alph-Asc" class="radio-btn">
+            <label class="sort-label">Alphabetical Ascending</label>
+            <input type="radio" id="Alph-Des" class="radio-btn">
+            <label class="sort-label">Alphabetical Descending</label>
+            <input type="radio" id="Pub-Des" class="radio-btn">
+            <label class="sort-label">Published Ascending</label>
+            <input type="radio" id="Pub-Des" class="radio-btn">
+            <label class="sort-label">Published Descending</label>
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
-      <label>Category:</label>
-      <input type="text" id="category" placeholder=""><br>
-
-      <label>Date:</label>
-      <input type="text" id="from-date"> ~ <input type="text" id="to-date"><br>
-
-      <label>Press name(s):</label>
-      <input type="text" id="press-names"><br>
-      <button class= "search-button">Search</button>
-    </form>
+      <div class= "reveal control-modal" id="Audio-Control-Modal" data-reveal>
+        <div>Article reader audio control panel</div>
+        <div class= "control-panel">
+          <div>
+            <label>Volume:</label>
+            <input type="range" min="0" max="10" class="slider" id="volume">
+          </div>
+          <div>
+            <label>Pitch:</label>
+            <input type="range" min="0" max="10" class="slider" id="pitch">
+          </div>
+          <div>  
+          <label>Rate:</label>
+          <input type="range" min="0" max="10" class="slider" id="rate">
+          </div>
+        </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
   </header>
+  
 
-  <main>
-    <div>
+  <main class= "grid-x">
+    <div class= "side-bar cell small-12 medium-3">
+      <form class= "card search-form">
+        <div class= "card-header">SEARCH BY ELEMENTS</div>
+        <div class= "card-body">
+          <label>Category:</label>
+          <select class= "dropdown-category">
+            <option value="general">General</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="health">Health</option>
+            <option value="science">Science</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+          </select>
 
+          <label>Date:</label>
+          <input type="date" id="from-date"><input type="date" id="to-date">
+
+          <label>Press name:</label>
+          <input type="text" id="press-names" placeholder="Press Name">
+
+          <label>Language:</label>
+          <select class= "dropdown-language">
+            <option value="en">English</option>
+            <option value="ar">Arabic</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="he">Hebrew</option>
+            <option value="it">Italian</option>
+            <option value="nl">Dutch</option>
+            <option value="no">Norwegian</option>
+            <option value="pt">Portuguese</option>
+            <option value="ru">Russian</option>
+            <option value="se">Swedish</option>
+            <option value="zh">Chinese</option>
+          </select>
+
+          <button class= "search-button" id="search-button">Search</button>
+        </div>
+      </form>
+      <section class= "card user-presets">
+        <div class= "card-header">USER PRESETS</div>
+        <div class= "card-body" id="user-preset">
+        <!-- local storage here -->
+        </div>
+      </section>
     </div>
+
+    <contents class= "article-section cell small-12 medium-9" value="article-page">
+      <!-- articles go here -->
+
+    </contents>
+   <div class ="modal" id="no-articles">
+      <div class = "modal-content">
+        <button class="close" id="no-articles-btn">&times;</button>
+        <p>Error: No articles found!</p>
+      </div>
+   </div>
+    <!-- two modals for the alerts / input wrong & network error -->
   </main>
+
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_UNIQUE_KEY"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 
 </html>
