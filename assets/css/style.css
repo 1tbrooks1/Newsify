@@ -43,22 +43,6 @@ nav {
     padding-right: 5px;
 }
 
-.sort-button {
-    color: white;
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
-
-.radio-btn {
-    margin:auto;
-}
-
-.sort-label {
-    line-height: normal;
-    text-align: center;
-    margin: 0 5px 0 0;
-}
-
 .control-modal {
     font-family: 'Bebas Neue';
     font-size: 1.2rem;
@@ -73,6 +57,17 @@ nav {
 
 .control-panel label {
     font-size: 1.0rem;
+}
+
+.sort-label {
+    color:white;
+    font-size: 1.0rem;
+    margin-right: 5px;
+}
+
+.dropdown-sort {
+    width: 11rem;
+    height: 1.9rem;
 }
 
 .slider {
