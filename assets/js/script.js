@@ -166,7 +166,6 @@ searchBtn.addEventListener("click", buildUrl);
 // pulls up articles within specified parameters
 
 //when they click on the article the speaker starts reading the text
-<<<<<<< HEAD
     //use modal to change aspects of speaker
     //they can change the voice, pitch, rate, and volume of the speaker
     // when they save the speaker charcateristics, this also dynamically saves
@@ -178,11 +177,9 @@ searchBtn.addEventListener("click", buildUrl);
 
 
 //wish list
-=======
 //use modal to change aspects of speaker
 //they can change the voice, pitch, rate, and volume of the speaker
 
->>>>>>> feature/input-fetch
 //they have the option to save the search inputs into a "playlist"
 // pull up new modal from save button
 // saves to local storage
