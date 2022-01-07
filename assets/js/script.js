@@ -31,7 +31,7 @@ function languageDd() {
     buildUrl(language);
 }
 
-// not sure if diplayarticles will work here 
+// not sure if display articles will work here 
 function sortList() {
     let sortChoice = document.querySelector(".dropdown-sort");
     let sort = sortChoice.value;
@@ -40,26 +40,56 @@ function sortList() {
     displayArticles();
 }
 
-function getDate() {
+/*function getDate() {
     let from = document.querySelector(".from");
     let until = document.querySelector(".until");
     let date1 = from.value;
     let date2 = until.value;
     buildUrl(date1, date2);
-}
+}*/
 
-// formSubmitHandler
+function formSubmitHandler(event) {
+    event.preventDefault()
+    console.log("working");
+    let outletChoice = document.querySelector("#press-names");
+    let outlet = outletChoice.value.trim();
+    let categoryChoice = document.querySelector(".dropdown-category");
+    let category = categoryChoice.value;
+    let languageChoice = document.querySelector(".dropdown-language");
+    let language = languageChoice.value;
 
-
-function buildUrl(outlet, category, language, sort, date1, date2) {
-    const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&date=${date1},${date2}&access_key=${apiKey}`;
 
     if (outlet || category || language) {
+      buildUrl(outlet, category, language)
+    }
+    else // edge case for no input
+     {
+         // modal: You must input atleast one of the parameters in the search box.
+         let error3 = document.querySelector("#wrong-input")
+         error3.setAttribute("class", "reveal")
+         error3.setAttribute("class", "block")
+         // not sure if blank quotes work to set attribute instead of class
+         error3.setAttribute("", "data-reveal")
+         let error3Btn = document.querySelector("#wrong-input-btn")
+         error3Btn.setAttribute("", "data-close")
+         error3Btn.addEventListener("click", function(){
+             error3.setAttribute("class", "none")
+    })
+     
+
+}
+}
+
+
+function buildUrl(outlet, category, language) {
+    const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
+    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&access_key=${apiKey}`;
+
         fetch(apiUrl)
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
+                        console.log(response);
                         console.log(data);
                         displayArticles(data);
                         //local storage function call
@@ -91,19 +121,6 @@ function buildUrl(outlet, category, language, sort, date1, date2) {
                     error2.setAttribute("class", "none")
                 })
             });
-    } else if (!outlet && !category && !language) {
-        // modal: You must input atleast one of the parameters in the search box.
-        let error3 = document.querySelector("#wrong-input")
-        error3.setAttribute("class", "reveal")
-        error3.setAttribute("class", "block")
-        // not sure if blank quotes work to set attribute instead of class
-        error3.setAttribute("", "data-reveal")
-        let error3Btn = document.querySelector("#wrong-input-btn")
-        error3Btn.setAttribute("", "data-close")
-        error3Btn.addEventListener("click", function(){
-            error3.setAttribute("class", "none")
-        })
-    }
 }
 
 function displayArticles(data) {
@@ -146,9 +163,7 @@ function readInformation(title, description, source) {
 
 
 
-searchBtn.addEventListener("click", function(){
-    console.log("working")
-});
+searchBtn.addEventListener("click", formSubmitHandler);
 
 
 
