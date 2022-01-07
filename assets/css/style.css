@@ -8,6 +8,8 @@ body {
     margin: auto;
     padding: 0;
     max-width: 1800px;
+    font-family: 'Bebas Neue';
+
 }
 
 .title-holder{
@@ -41,7 +43,23 @@ nav {
     padding-right: 5px;
 }
 
-.audio-control {
+.sort-button {
+    color: white;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.radio-btn {
+    margin:auto;
+}
+
+.sort-label {
+    line-height: normal;
+    text-align: center;
+    margin: 0 5px 0 0;
+}
+
+.control-modal {
     font-family: 'Bebas Neue';
     font-size: 1.2rem;
 }
