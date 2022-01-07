@@ -2,12 +2,18 @@
     --primary: #2f2f2f;
     --secondary: #d4d4d4;
     --tertiary: #808080;
-  }
+}
 
+body {
+    margin: auto;
+    padding: 0;
+    max-width: 1800px;
+    font-family: 'Bebas Neue';
 
+}
 
 .title-holder{
-   padding: 30px 30px 30px 30px;
+    padding: 30px 30px 30px 30px;
 }
 
 .app-title {
@@ -28,49 +34,77 @@
 nav {
     background-color: var(--primary);
     display: flex;
-    justify-content: space-between;
+    flex-direction: row-reverse;
+    height: 30px;
 }
 
-.language-selector {
+.speaker-button{
+    font-size: 1.2rem;
+    padding-right: 5px;
+}
+
+.sort-button {
     color: white;
-    display: inline-block;
-    margin: 5px 5px 5px 0;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.radio-btn {
+    margin:auto;
+}
+
+.sort-label {
+    line-height: normal;
+    text-align: center;
+    margin: 0 5px 0 0;
+}
+
+.control-modal {
+    font-family: 'Bebas Neue';
+    font-size: 1.2rem;
+}
+
+.control-panel {
+    padding-top: 10px;
+    background-color: var(--secondary);
+    justify-content: space-around;
     display: flex;
-    gap: 5px
 }
 
-.dropdown-language {
-    display: inline-block;
-    width: auto;
-    height: 1.5rem;
-    margin: 0;
-}
-
-.hamburger-icon {
-    width: auto;
-    height: auto;
-    margin-left: 10px;
-}
-
-.form-handler {
-    /* display: none; */
-    color: white;
-    background-color: var(--tertiary);
-    text-align: left;
-    padding: 25px 0px 10px 10px;
-}
-
-.form-handler label {
-    display: inline-block;
+.control-panel label {
     font-size: 1.0rem;
 }
 
-.form-handler input {
+.slider {
+    -webkit-appearance: none;
     width: auto;
-    display: inline-block;
-    height: 2rem;
-    border-radius: 0.3rem;
-}
+    height: 10px;
+    background: var(--tertiary);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
 
 .search-button {
     border: 2px solid  var(--secondary);
@@ -80,3 +114,109 @@ nav {
     padding: 5px;
     border-radius: 0.3rem;
 }
+
+main {
+    font-family: 'Bebas Neue';
+    height: 100%
+}
+
+.card {
+    border: 3px solid var(--primary);
+    border-radius: 0.3rem;
+    background-color: var(--secondary);
+    min-height: 10rem;
+}
+
+.card-header {
+    background-color: var(--primary);
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.card-body {
+    padding: 2.5%
+}
+
+.search-form label {
+    font-size: 1.2rem;
+}
+
+.search-form input {
+    width: 100%;
+    height: 2rem;
+    border-radius: 0.3rem;
+}
+
+
+.search-button {
+    width: 100%;
+}
+
+.article-section{
+    padding: 15px 0 0 15px;
+}
+
+.user-presets {
+    border: 3px solid var(--primary);
+    border-radius: 0.3rem;
+}
+
+.side-bar {
+    background-color: var(--secondary);
+    padding: 15px 10px 0 10px;
+    min-width: 200px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 250px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    header h1 small {
+      display: none;
+    }
+    header .title-holder{
+        padding: 0;
+        width: 100%;
+    }
+    header .title-holder h1{
+        width: 100%;
+        text-align: center;
+    }
+    nav {
+        border-top: 1px solid white;
+    }
+  }
+
