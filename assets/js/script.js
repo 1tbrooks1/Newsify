@@ -8,6 +8,7 @@
 
 // DOM variables
 var articleContainer = document.querySelector(".article-section");
+let searchBtn = document.getElementById("search-button")
 
 function sourceInput() {
     let outletChoice = document.querySelector("#press-names");
@@ -46,6 +47,9 @@ function getDate() {
     let date2 = until.value;
     buildUrl(date1, date2);
 }
+
+// formSubmitHandler
+
 
 function buildUrl(outlet, category, language, sort, date1, date2) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
@@ -142,7 +146,9 @@ function readInformation(title, description, source) {
 
 
 
-searchBtn.addEventListener("click", buildUrl);
+searchBtn.addEventListener("click", function(){
+    console.log("working")
+});
 
 
 
