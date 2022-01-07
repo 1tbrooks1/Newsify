@@ -10,29 +10,8 @@
 var articleContainer = document.querySelector(".article-section");
 let searchBtn = document.getElementById("search-button")
 
-function sourceInput() {
-    let outletChoice = document.querySelector("#press-names");
-    let outlet = outletChoice.value.trim();
-    console.log(outlet);
-    buildUrl(outlet);
-}
-
-function categoryDd() {
-    let categoryChoice = document.querySelector(".dropdown-category");
-    let category = categoryChoice.value;
-    console.log(category);
-    buildUrl(category);
-}
-
-function languageDd() {
-    let languageChoice = document.querySelector(".dropdown-language");
-    let language = languageChoice.value;
-    console.log(language);
-    buildUrl(language);
-}
-
 // not sure if display articles will work here 
-function sortList() {
+/*function sortList() {
     let sortChoice = document.querySelector(".dropdown-sort");
     let sort = sortChoice.value;
     console.log(sort);
@@ -40,7 +19,7 @@ function sortList() {
     displayArticles();
 }
 
-/*function getDate() {
+function getDate() {
     let from = document.querySelector(".from");
     let until = document.querySelector(".until");
     let date1 = from.value;
@@ -60,11 +39,12 @@ function formSubmitHandler(event) {
 
 
     if (outlet || category || language) {
+        console.log(category, outlet);
       buildUrl(outlet, category, language)
     }
     else // edge case for no input
      {
-         // modal: You must input atleast one of the parameters in the search box.
+         // modal: You must input at least one of the parameters in the search box.
          let error3 = document.querySelector("#wrong-input")
          error3.setAttribute("class", "reveal")
          error3.setAttribute("class", "block")
@@ -124,7 +104,7 @@ function buildUrl(outlet, category, language) {
 }
 
 function displayArticles(data) {
-    for (i = 0; i < data.length; i++) {
+    for (i = 0; i < data.data.length; i++) {
         let articleEl = document.createElement("div");
         articleContainer.appendChild(articleEl);
 
