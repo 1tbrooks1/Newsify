@@ -7,9 +7,11 @@
     //and then we change that attribute once the input is entered
 
 // DOM variables
-var articleContainer = document.querySelector(".article-section");
-let searchBtn = document.getElementById("search-button")
-var volume = document.querySelector(".speaker-volume")
+let articleContainer = document.querySelector(".article-section");
+let searchBtn = document.getElementById("search-button");
+let volume = document.querySelector(".speaker-volume");
+let pitch = document.querySelector(".pitch-rate");
+let rate = document.querySelector(".rate");
 
 // not sure if display articles will work here 
 /*function sortList() {
@@ -28,10 +30,14 @@ function getDate() {
     buildUrl(date1, date2);
 }*/
 
-function speakerVolume() {
-    var volume = document.querySelector(".speaker-volume")
+function setVolumes() {
     speakerVolume = volume.value;
     console.log(speakerVolume);
+    pitchRate = pitch.value;
+    console.log(pitchRate);
+    speedRate = rate.value;
+    console.log(speedRate);
+
 }
 
 function formSubmitHandler(event) {
@@ -161,7 +167,9 @@ function displayArticles(data) {
 
 searchBtn.addEventListener("click", formSubmitHandler);
 
-volume.addEventListener("click", speakerVolume)
+volume.addEventListener("click", setVolumes)
+pitch.addEventListener("click", setVolumes)
+rate.addEventListener("click", setVolumes)
 
 
 
