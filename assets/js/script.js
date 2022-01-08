@@ -130,6 +130,7 @@ function displayArticles(data) {
 
         let articleTitle = document.createElement("h4");
         let articleStop = document.createElement("button");
+        articleStop.classList.add("button");
         articleStop.textContent = "Stop Article"
         articleTitle.textContent = data.data[i].title;
         responsiveVoice.speak(data.data[i].title);
@@ -141,14 +142,14 @@ function displayArticles(data) {
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
-        responsiveVoice.speak("Article description is") ;
+        responsiveVoice.speak("Article description is");
         responsiveVoice.speak(data.data[i].description);
         articleTitle.appendChild(articleDescription);
 
         let articleUrl = document.createElement("a");
         articleUrl.text = data.data[i].url;
-        responsiveVoice.speak("The link to the article is");
-        responsiveVoice.speak(data.data[i].url);
+        /*responsiveVoice.speak("The link to the article is");
+        responsiveVoice.speak(data.data[i].url);*/
         articleTitle.appendChild(articleUrl);
 
         let articleSource = document.createElement("p");
