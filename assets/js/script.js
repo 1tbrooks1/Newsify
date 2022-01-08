@@ -32,12 +32,18 @@ function getDate() {
 
 function setVolumes() {
     speakerVolume = volume.value;
-    console.log(speakerVolume);
+    console.log("volume: " + speakerVolume);
     pitchRate = pitch.value;
-    console.log(pitchRate);
+    console.log("pitch: " + pitchRate);
     speedRate = rate.value;
-    console.log(speedRate);
+    console.log("rate: " + speedRate);
 
+    speakerSettings(speakerVolume, pitchRate, speedRate);
+}
+
+function speakerSettings(volume, pitch, rate) {
+    console.log(volume, pitch, rate);
+    responsiveVoice.speak("US English Female", {volume: volume}, {pitch: pitch}, {rate: rate});
 }
 
 function formSubmitHandler(event) {
