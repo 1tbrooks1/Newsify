@@ -63,13 +63,10 @@ function formSubmitHandler(event) {
     if (outlet || category || language) {
         console.log(category, outlet);
       buildUrl(outlet, category, language)
-    }
-    else // edge case for no input
-     {
-         // modal: You must input at least one of the parameters in the search box.
-     
 
-}
+      // localstorage
+    }
+     
 }
 
 
@@ -86,9 +83,13 @@ function buildUrl(outlet, category, language) {
                         displayArticles(data);
                         //local storage function call
                     });
-                } else {
-                    // response failed
+                } else if (data.data.length ===0) {
+                    // if response succeeds but returns nothing
                     $("#no-articles").foundation("open")
+                }   
+                else if (!response.ok) {
+                    // response failed
+                    $("#wrong-input").foundation("open")
                 }
             })
             .catch(function (error) {
