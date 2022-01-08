@@ -9,20 +9,20 @@
 // DOM variables
 let articleContainer = document.querySelector(".article-section");
 let searchBtn = document.getElementById("search-button");
-let volume = document.querySelector(".speaker-volume");
-let pitch = document.querySelector(".pitch-rate");
-let rate = document.querySelector(".rate");
+let volumeEl = document.querySelector(".speaker-volume");
+let pitchEl = document.querySelector(".pitch-rate");
+let rateEl = document.querySelector(".rate");
+let sortChoice = document.querySelector(".dropdown-sort");
 
-// not sure if display articles will work here 
-/*function sortList() {
-    let sortChoice = document.querySelector(".dropdown-sort");
+// tied to an event listener at the bottom, operational
+function sortList() {
     let sort = sortChoice.value;
     console.log(sort);
-    buildUrl(sort);
-    displayArticles();
+    // buildUrl(sort);
+    // displayArticles();
 }
 
-function getDate() {
+/*function getDate() {
     let from = document.querySelector(".from");
     let until = document.querySelector(".until");
     let date1 = from.value;
@@ -30,20 +30,23 @@ function getDate() {
     buildUrl(date1, date2);
 }*/
 
+// operational
 function setVolumes() {
-    speakerVolume = volume.value;
+    speakerVolume = volumeEl.value;
     console.log("volume: " + speakerVolume);
-    pitchRate = pitch.value;
+    pitchRate = pitchEl.value;
     console.log("pitch: " + pitchRate);
-    speedRate = rate.value;
+    speedRate = rateEl.value;
     console.log("rate: " + speedRate);
 
     speakerSettings(speakerVolume, pitchRate, speedRate);
 }
 
-function speakerSettings(volume, pitch, rate) {
-    console.log(volume, pitch, rate);
-    responsiveVoice.speak("US English Female", {volume: volume}, {pitch: pitch}, {rate: rate});
+// not working at the moment
+function speakerSettings(sVolume, sPitch, sRate) {
+    console.log(sVolume, sPitch, sRate);
+    responsiveVoice.speak({volume: sVolume}, {pitch: sPitch}, {rate: sRate});
+    console.log(volume.value, pitch.value, rate.value);
 }
 
 function formSubmitHandler(event) {
@@ -68,7 +71,7 @@ function formSubmitHandler(event) {
          error3.setAttribute("class", "reveal")
          error3.setAttribute("class", "block")
          // not sure if blank quotes work to set attribute instead of class
-         error3.setAttribute("", "data-reveal")
+         error3.setAttribute("potato", "data-reveal")
          let error3Btn = document.querySelector("#wrong-input-btn")
          error3Btn.setAttribute("", "data-close")
          error3Btn.addEventListener("click", function(){
@@ -99,11 +102,12 @@ function buildUrl(outlet, category, language) {
                     error1.setAttribute("class", "reveal")
                     error1.setAttribute("class", "block")
                     // not sure if blank quotes work to set attribute instead of class
-                    error1.setAttribute("", "data-reveal")
+                   // error1.setAttribute("data-open", "no-articles")
                     let error1Btn = document.querySelector("#no-articles-btn")
-                    error1Btn.setAttribute("", "data-close")
+                   // error1Btn.setAttribute("potato", "data-close")
                     error1Btn.addEventListener("click", function(){
-                        error1.setAttribute("class", "none")
+                        error1.removeAttribute("class", "reveal")
+                      //  error1.setAttribute("class", "none")
                     })
                 }
             })
@@ -128,39 +132,50 @@ function displayArticles(data) {
         let articleEl = document.createElement("div");
         articleContainer.appendChild(articleEl);
 
-        let articleTitle = document.createElement("h4");
+        let articleTitle = document.createElement("h3");
         let articleStop = document.createElement("button");
+        let articleStart = document.createElement("button");
+
+        articleStart.classList.add("button");
         articleStop.classList.add("button");
+
+        articleStart.textContent = "Start Article"
         articleStop.textContent = "Stop Article"
+
         articleTitle.textContent = data.data[i].title;
+
         responsiveVoice.speak(data.data[i].title);
+        articleStart.addEventListener("click", function() {
+            responsiveVoice.speak(articleTitle.textContent);
+        })
         articleStop.addEventListener("click", function() {
             responsiveVoice.cancel();
         })
         articleEl.appendChild(articleTitle);
-        articleEl.appendChild(articleStop);
+        
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
         responsiveVoice.speak("Article description is");
         responsiveVoice.speak(data.data[i].description);
-        articleTitle.appendChild(articleDescription);
+        articleEl.appendChild(articleDescription);
 
         let articleUrl = document.createElement("a");
         articleUrl.text = data.data[i].url;
-        /*responsiveVoice.speak("The link to the article is");
-        responsiveVoice.speak(data.data[i].url);*/
-        articleTitle.appendChild(articleUrl);
+        articleEl.appendChild(articleUrl);
 
         let articleSource = document.createElement("p");
         articleSource.textContent = data.data[i].source;
         responsiveVoice.speak("The source of the article comes from");
         responsiveVoice.speak(data.data[i].source);
-        articleTitle.appendChild(articleSource);
+        articleEl.appendChild(articleSource);
 
         let articleImage = document.createElement("img");
         articleImage.setAttribute("src", data.data[i].image);
-        articleTitle.appendChild(articleImage);
+        articleEl.appendChild(articleImage);
+
+        articleEl.appendChild(articleStart);
+        articleEl.appendChild(articleStop);
 
         // speaker button dynamically generates
         // event listener for read information
@@ -171,12 +186,17 @@ function displayArticles(data) {
 
 
 
-
+// Event Listeners
+// Starts app
 searchBtn.addEventListener("click", formSubmitHandler);
 
-volume.addEventListener("click", setVolumes)
-pitch.addEventListener("click", setVolumes)
-rate.addEventListener("click", setVolumes)
+// Sets volume settings
+volumeEl.addEventListener("click", setVolumes);
+pitchEl.addEventListener("click", setVolumes);
+rateEl.addEventListener("click", setVolumes);
+
+// Sorts the way news is presented
+sortChoice.addEventListener("click", sortList);
 
 
 
