@@ -73,9 +73,9 @@ function formSubmitHandler(event) {
 }
 
 
-function buildUrl(outlet, category, language, sort) {
+function buildUrl(outlet, category, language) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&limit=5&access_key=${apiKey}`;
+    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&limit=5&access_key=${apiKey}`;
 
         fetch(apiUrl)
             .then(function (response) {
@@ -117,7 +117,7 @@ function displayArticles(data) {
 
         responsiveVoice.speak(data.data[i].title);
         articleStart.addEventListener("click", function() {
-            responsiveVoice.speak(articleTitle.textContent);
+            responsiveVoice.speak(`${articleTitle.textContent} ${articleDescription.textContent} ${articleSource.textContent}`);
         })
         articleStop.addEventListener("click", function() {
             responsiveVoice.cancel();
@@ -127,8 +127,8 @@ function displayArticles(data) {
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
-        responsiveVoice.speak("Article description is");
-        responsiveVoice.speak(data.data[i].description);
+        // responsiveVoice.speak("Article description is");
+        responsiveVoice.speak(`Article description is ${data.data[i].description}`);
         articleEl.appendChild(articleDescription);
 
         let articleUrl = document.createElement("a");
