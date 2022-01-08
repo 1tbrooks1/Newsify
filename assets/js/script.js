@@ -9,6 +9,7 @@
 // DOM variables
 var articleContainer = document.querySelector(".article-section");
 let searchBtn = document.getElementById("search-button")
+var volume = document.querySelector(".speaker-volume")
 
 // not sure if display articles will work here 
 /*function sortList() {
@@ -26,6 +27,12 @@ function getDate() {
     let date2 = until.value;
     buildUrl(date1, date2);
 }*/
+
+function speakerVolume() {
+    var volume = document.querySelector(".speaker-volume")
+    speakerVolume = volume.value;
+    console.log(speakerVolume);
+}
 
 function formSubmitHandler(event) {
     event.preventDefault()
@@ -63,7 +70,7 @@ function formSubmitHandler(event) {
 
 function buildUrl(outlet, category, language) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&access_key=${apiKey}`;
+    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&limit=5&access_key=${apiKey}`;
 
         fetch(apiUrl)
             .then(function (response) {
@@ -104,24 +111,38 @@ function buildUrl(outlet, category, language) {
 }
 
 function displayArticles(data) {
+    console.log(data)
     for (i = 0; i < data.data.length; i++) {
         let articleEl = document.createElement("div");
         articleContainer.appendChild(articleEl);
 
         let articleTitle = document.createElement("h4");
+        let articleStop = document.createElement("button");
+        articleStop.textContent = "Stop Article"
         articleTitle.textContent = data.data[i].title;
+        responsiveVoice.speak(data.data[i].title);
+        articleStop.addEventListener("click", function() {
+            responsiveVoice.cancel();
+        })
         articleEl.appendChild(articleTitle);
+        articleEl.appendChild(articleStop);
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
+        responsiveVoice.speak("Article description is") ;
+        responsiveVoice.speak(data.data[i].description);
         articleTitle.appendChild(articleDescription);
 
         let articleUrl = document.createElement("a");
         articleUrl.text = data.data[i].url;
+        responsiveVoice.speak("The link to the article is");
+        responsiveVoice.speak(data.data[i].url);
         articleTitle.appendChild(articleUrl);
 
         let articleSource = document.createElement("p");
         articleSource.textContent = data.data[i].source;
+        responsiveVoice.speak("The source of the article comes from");
+        responsiveVoice.speak(data.data[i].source);
         articleTitle.appendChild(articleSource);
 
         let articleImage = document.createElement("img");
@@ -131,19 +152,16 @@ function displayArticles(data) {
         // speaker button dynamically generates
         // event listener for read information
 
-        readInformation(articleTitle, articleDescription, articleSource);
+        // readInformation(articleTitle, articleDescription, articleSource);
     }
-}
-
-function readInformation(title, description, source) {
-
-
 }
 
 
 
 
 searchBtn.addEventListener("click", formSubmitHandler);
+
+volume.addEventListener("click", speakerVolume)
 
 
 
