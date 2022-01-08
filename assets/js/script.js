@@ -67,25 +67,15 @@ function formSubmitHandler(event) {
     else // edge case for no input
      {
          // modal: You must input at least one of the parameters in the search box.
-         let error3 = document.querySelector("#wrong-input")
-         error3.setAttribute("class", "reveal")
-         error3.setAttribute("class", "block")
-         // not sure if blank quotes work to set attribute instead of class
-         error3.setAttribute("potato", "data-reveal")
-         let error3Btn = document.querySelector("#wrong-input-btn")
-         error3Btn.setAttribute("", "data-close")
-         error3Btn.addEventListener("click", function(){
-             error3.setAttribute("class", "none")
-    })
      
 
 }
 }
 
 
-function buildUrl(outlet, category, language) {
+function buildUrl(outlet, category, language, sort) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&limit=5&access_key=${apiKey}`;
+    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&limit=5&access_key=${apiKey}`;
 
         fetch(apiUrl)
             .then(function (response) {
@@ -98,31 +88,12 @@ function buildUrl(outlet, category, language) {
                     });
                 } else {
                     // response failed
-                    let error1 = document.querySelector("#no-articles")
-                    error1.setAttribute("class", "reveal")
-                    error1.setAttribute("class", "block")
-                    // not sure if blank quotes work to set attribute instead of class
-                   // error1.setAttribute("data-open", "no-articles")
-                    let error1Btn = document.querySelector("#no-articles-btn")
-                   // error1Btn.setAttribute("potato", "data-close")
-                    error1Btn.addEventListener("click", function(){
-                        error1.removeAttribute("class", "reveal")
-                      //  error1.setAttribute("class", "none")
-                    })
+                    $("#no-articles").foundation("open")
                 }
             })
             .catch(function (error) {
                 // modal: error 404: bad network connection.
-                let error2 = document.querySelector("#network-error")
-                error2.setAttribute("class", "reveal")
-                error2.setAttribute("class", "block")
-                // not sure if blank quotes work to set attribute instead of class
-                error2.setAttribute("", "data-reveal")
-                let error2Btn = document.querySelector("#network-error-btn")
-                error2Btn.setAttribute("", "data-close")
-                error2Btn.addEventListener("click", function(){
-                    error2.setAttribute("class", "none")
-                })
+                $("#network-error").foundation("open")
             });
 }
 
