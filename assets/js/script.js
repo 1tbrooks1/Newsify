@@ -17,7 +17,7 @@ let clearBtn = document.querySelector(".clear-button")
 
 // global variables
 let history = JSON.parse(localStorage.getItem("inputs")) || []
-let userInputs = {}
+let userInputs = { source: "", topic: "", text: ""}
 
 // tied to an event listener at the bottom, operational
 function sortList() {
@@ -56,7 +56,7 @@ function speakerSettings(sVolume, sPitch, sRate) {
 
 function formSubmitHandler(event) {
     event.preventDefault()
-    console.log("working");
+    // get values of dropdowns
     let outletChoice = document.querySelector("#press-names");
     let outlet = outletChoice.value.trim();
     let categoryChoice = document.querySelector(".dropdown-category");
@@ -64,13 +64,15 @@ function formSubmitHandler(event) {
     let languageChoice = document.querySelector(".dropdown-language");
     let language = languageChoice.value;
 
-
+    // if the search inputs match either of these
     if (outlet || category || language) {
-        console.log(category, outlet);
       buildUrl(outlet, category, language)
 
-      // localstorage *** not able to prevent old searchs from repopulating
-      if (!history.includes(outlet || category || langauge)) {
+      // if input combinations are unique, set to localstorage and show in history DOM
+      if (userInputs.source !== outlet ||
+        userInputs.topic !== category ||
+        userInputs.text !== language) {
+
         userInputs = {
             source: outlet,
             topic: category,
@@ -79,7 +81,9 @@ function formSubmitHandler(event) {
           history.push(userInputs)
           localStorage.setItem("inputs", JSON.stringify(history))
           showHistory(history)
-      }
+
+      } // otherwise, show history anyways
+
       else{
           showHistory(history)
       }
@@ -90,7 +94,7 @@ function formSubmitHandler(event) {
 
 function buildUrl(outlet, category, language) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&limit=5&access_key=${apiKey}`;
+    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&limit=25&access_key=${apiKey}`;
 
         fetch(apiUrl)
             .then(function (response) {
@@ -117,10 +121,10 @@ function buildUrl(outlet, category, language) {
 }
 
 function displayArticles(data) {
-    console.log(data)
+     // to refresh the display with every search
     articleContainer.innerHTML=""
     for (i = 0; i < data.data.length; i++) {
-        // to refresh the display
+       
         let articleEl = document.createElement("div");
         articleContainer.appendChild(articleEl);
 
@@ -162,11 +166,11 @@ function displayArticles(data) {
 
         let articleImage = document.createElement("img");
         articleImage.setAttribute("src", data.data[i].image);
-        articleImage.setAttribute()
+        // to prevent page clutter, remove null images
         if (data.data[i].image !== null) {
             articleEl.appendChild(articleImage)
         } 
-        
+         // to make button elements display block
         let buttonDivEl =document.createElement("div")
         buttonDivEl.appendChild(articleStart)
         buttonDivEl.appendChild(articleStop)
@@ -181,6 +185,7 @@ function displayArticles(data) {
 
 function showHistory(history) {
     let searchHistoryEl= document.getElementById("search-history")
+    // to allow it to clear when clear button is pressed
     searchHistoryEl.innerHTML=""
 for (let i=0; i<history.length; i++){
     let searchedInputEl = document.createElement("button")
@@ -189,6 +194,7 @@ for (let i=0; i<history.length; i++){
     searchedInputEl.classList.add("search-button")
     searchedInputEl.textContent= `${history[i].source} ${history[i].topic} ${history[i].text}`
     searchedInputEl.style.display ="block"
+    // fetch the api with old searches
     searchedInputEl.addEventListener("click", function(){
         buildUrl(history[i].source, history[i].topic, history[i].text)
     })
@@ -199,7 +205,7 @@ function clearHistory() {
     localStorage.clear()
 
     history=[]
-
+    // show cleared history DOM
     showHistory(history)
 }
 
@@ -219,6 +225,7 @@ sortChoice.addEventListener("click", sortList);
 
 // clears local storage and search history DOM
 clearBtn.addEventListener("click", clearHistory)
+// allow search history to persist on refresh
 showHistory(history)
 
 
