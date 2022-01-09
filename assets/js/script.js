@@ -14,6 +14,9 @@ let pitchEl = document.querySelector(".pitch-rate");
 let rateEl = document.querySelector(".rate");
 let sortChoice = document.querySelector(".dropdown-sort");
 
+// global variables
+let history = JSON.parse(localStorage.getItem("inputs")) || []
+
 // tied to an event listener at the bottom, operational
 function sortList() {
     let sort = sortChoice.value;
@@ -65,6 +68,19 @@ function formSubmitHandler(event) {
       buildUrl(outlet, category, language)
 
       // localstorage
+      if (!history.includes(outlet||category||language)) {
+        let userInputs = {
+            source: outlet,
+            topic: category,
+            text: language
+        }
+          history.push(userInputs)
+          localStorage.setItem("inputs", JSON.stringify(history))
+          showHistory(history)
+      }
+      else{
+          showHistory(history)
+      }
     }
      
 }
@@ -81,13 +97,13 @@ function buildUrl(outlet, category, language) {
                         console.log(response);
                         console.log(data);
                         displayArticles(data);
-                        //local storage function call
+                        
+                        if (data.data.length ===0) {
+                            // if response succeeds but returns nothing
+                            $("#no-articles").foundation("open")
+                        }  
                     });
-                } else if (data.data.length ===0) {
-                    // if response succeeds but returns nothing
-                    $("#no-articles").foundation("open")
-                }   
-                else if (!response.ok) {
+                } else {
                     // response failed
                     $("#wrong-input").foundation("open")
                 }
@@ -102,6 +118,8 @@ function displayArticles(data) {
     console.log(data)
     for (i = 0; i < data.data.length; i++) {
         let articleEl = document.createElement("div");
+        // to refresh the display
+        articleEl.innerHTML=""
         articleContainer.appendChild(articleEl);
 
         let articleTitle = document.createElement("h3");
@@ -156,6 +174,11 @@ function displayArticles(data) {
     }
 }
 
+function showHistory(history) {
+for (let i=0; i<history.length; i++){
+    
+}
+}
 
 
 // Event Listeners
@@ -171,7 +194,7 @@ rateEl.addEventListener("click", setVolumes);
 sortChoice.addEventListener("click", sortList);
 
 
-
+showHistory(history)
 
 
 
