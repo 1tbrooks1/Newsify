@@ -20,10 +20,9 @@
     <nav>
       <button class="speaker-button" data-open="Audio-Control-Modal">🔊</button>
         <select class= "dropdown-sort">
-          <option value=""></option>
-          <option value="published_desc">Published Descending</option>
-          <option value="published_asc">Published Ascending</option>
-          <option value="popularity">Popularity</option>
+          <option  class ="desc" value="published_desc">Published Descending</option>
+          <option  class ="asc" value="published_asc">Published Ascending</option>
+          <option  class ="pop" value="popularity">Popularity</option>
         </select>
       <label class="sort-label">Sort:</label>
     </nav>
@@ -67,7 +66,7 @@
           </select>
 
           <label>Date:</label>
-          <input type="date" id="from-date"><input type="date" id="to-date">
+          <input type="date" value = "yyyy-MM-dd" id="from-date"><input type="date" value = "yyyy-MM-dd" id="to-date">
 
           <label>Source:</label>
           <input type="text" id="press-names" placeholder="Press Name">
