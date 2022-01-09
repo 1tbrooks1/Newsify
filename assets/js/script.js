@@ -68,7 +68,7 @@ function formSubmitHandler(event) {
       buildUrl(outlet, category, language)
 
       // localstorage
-      if (!history.includes(outlet||category||language)) {
+      if (!history.some(outlet, category, language)) {
         let userInputs = {
             source: outlet,
             topic: category,
@@ -116,10 +116,10 @@ function buildUrl(outlet, category, language) {
 
 function displayArticles(data) {
     console.log(data)
+    articleContainer.innerHTML=""
     for (i = 0; i < data.data.length; i++) {
-        let articleEl = document.createElement("div");
         // to refresh the display
-        articleEl.innerHTML=""
+        let articleEl = document.createElement("div");
         articleContainer.appendChild(articleEl);
 
         let articleTitle = document.createElement("h3");
@@ -176,7 +176,7 @@ function displayArticles(data) {
 
 function showHistory(history) {
 for (let i=0; i<history.length; i++){
-    
+
 }
 }
 
