@@ -147,22 +147,33 @@ function displayArticles(data) {
         let articleTitle = document.createElement("h3");
         let articleStop = document.createElement("button");
         let articleStart = document.createElement("button");
+        let nextBtn= document.createElement("button")
         articleStart.textContent = "Start Article"
         articleStop.textContent = "Stop Article"
+        nextBtn.textContent = "Skip"
         articleStart.classList.add("button");
         articleStop.classList.add("button");
+        nextBtn.classList.add("button")
 
         articleTitle.textContent = data.data[i].title;
         articleEl.appendChild(articleTitle);
 
         responsiveVoice.speak(data.data[i].title);
+
         articleStart.addEventListener("click", function () {
             responsiveVoice.speak(`${articleTitle.textContent} ${articleDescription.textContent} ${articleSource.textContent}`);
         })
         articleStop.addEventListener("click", function () {
             responsiveVoice.cancel();
+        }) // next btn doesnt skip because doesnt read title
+        nextBtn.addEventListener("click", function(){ 
+            console.log("skip")
+            responsiveVoice.cancel()
+            i+=1
+            responsiveVoice.speak(`${data.data[i].title.textContent} 
+            Article description is ${data.data[i].description.textContent}
+            The source of the article comes from ${data.data[i].source.textContent}`)
         })
-
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
@@ -190,12 +201,8 @@ function displayArticles(data) {
         let buttonDivEl = document.createElement("div")
         buttonDivEl.appendChild(articleStart)
         buttonDivEl.appendChild(articleStop)
+        buttonDivEl.appendChild(nextBtn)
         articleEl.appendChild(buttonDivEl)
-
-        // speaker button dynamically generates
-        // event listener for read information
-
-        // readInformation(articleTitle, articleDescription, articleSource);
     }
 }
 
