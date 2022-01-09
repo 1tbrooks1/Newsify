@@ -87,9 +87,6 @@ function formSubmitHandler(event) {
             buildUrl(outlet, category, language, sort)
 
 
-
-
-
         } // otherwise, show history anyways
         // else if (sort) { // Sorts the way news is presented: ***not refreshing display on click
         //     sortChoice.addEventListener("click", function () {
@@ -142,6 +139,7 @@ function displayArticles(data) {
     for (i = 0; i < data.data.length; i++) {
 
         let articleEl = document.createElement("div");
+        articleEl.setAttribute("class", "border margin-bottom-2")
         articleContainer.appendChild(articleEl);
 
         let articleTitle = document.createElement("h3");
@@ -151,9 +149,9 @@ function displayArticles(data) {
         articleStart.textContent = "Start Article"
         articleStop.textContent = "Stop Article"
         nextBtn.textContent = "Skip"
-        articleStart.classList.add("button");
-        articleStop.classList.add("button");
-        nextBtn.classList.add("button")
+        articleStart.setAttribute("class", "button radius bordered shadow margin-2");
+        articleStop.setAttribute("class", "button radius bordered shadow margin-2");
+        nextBtn.setAttribute("class", "button radius bordered shadow margin-2 primary");
 
         articleTitle.textContent = data.data[i].title;
         articleEl.appendChild(articleTitle);
@@ -169,10 +167,10 @@ function displayArticles(data) {
         nextBtn.addEventListener("click", function(){ 
             console.log("skip")
             responsiveVoice.cancel()
-            i+=1
-            responsiveVoice.speak(`${data.data[i].title.textContent} 
-            Article description is ${data.data[i].description.textContent}
-            The source of the article comes from ${data.data[i].source.textContent}`)
+            //i+=1
+            responsiveVoice.speak(`${data.data[i+1].title} 
+            Article description is ${data.data[i+1].description}
+            The source of the article comes from ${data.data[i+1].source}`)
         })
 
         let articleDescription = document.createElement("p");
@@ -182,11 +180,11 @@ function displayArticles(data) {
         articleEl.appendChild(articleDescription);
 
         let articleUrl = document.createElement("a");
-        articleUrl.text = data.data[i].url;
+        articleUrl.textContent = `URL: ${data.data[i].url}`;
         articleEl.appendChild(articleUrl);
 
         let articleSource = document.createElement("p");
-        articleSource.textContent = data.data[i].source;
+        articleSource.textContent = `Source: ${data.data[i].source}`;
         responsiveVoice.speak("The source of the article comes from");
         responsiveVoice.speak(data.data[i].source);
         articleEl.appendChild(articleSource);
