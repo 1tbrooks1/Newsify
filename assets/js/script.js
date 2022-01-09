@@ -13,9 +13,11 @@ let volumeEl = document.querySelector(".speaker-volume");
 let pitchEl = document.querySelector(".pitch-rate");
 let rateEl = document.querySelector(".rate");
 let sortChoice = document.querySelector(".dropdown-sort");
+let clearBtn = document.querySelector(".clear-button")
 
 // global variables
 let history = JSON.parse(localStorage.getItem("inputs")) || []
+let userInputs = {}
 
 // tied to an event listener at the bottom, operational
 function sortList() {
@@ -67,9 +69,9 @@ function formSubmitHandler(event) {
         console.log(category, outlet);
       buildUrl(outlet, category, language)
 
-      // localstorage
-      if (!history.some(outlet, category, language)) {
-        let userInputs = {
+      // localstorage *** not able to prevent old searchs from repopulating
+      if (!history.includes(outlet || category || langauge)) {
+        userInputs = {
             source: outlet,
             topic: category,
             text: language
@@ -125,14 +127,13 @@ function displayArticles(data) {
         let articleTitle = document.createElement("h3");
         let articleStop = document.createElement("button");
         let articleStart = document.createElement("button");
-
+        articleStart.textContent = "Start Article"
+        articleStop.textContent = "Stop Article"
         articleStart.classList.add("button");
         articleStop.classList.add("button");
 
-        articleStart.textContent = "Start Article"
-        articleStop.textContent = "Stop Article"
-
         articleTitle.textContent = data.data[i].title;
+        articleEl.appendChild(articleTitle);
 
         responsiveVoice.speak(data.data[i].title);
         articleStart.addEventListener("click", function() {
@@ -141,12 +142,11 @@ function displayArticles(data) {
         articleStop.addEventListener("click", function() {
             responsiveVoice.cancel();
         })
-        articleEl.appendChild(articleTitle);
-        
+       
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
-        // responsiveVoice.speak("Article description is");
+        
         responsiveVoice.speak(`Article description is ${data.data[i].description}`);
         articleEl.appendChild(articleDescription);
 
@@ -162,10 +162,15 @@ function displayArticles(data) {
 
         let articleImage = document.createElement("img");
         articleImage.setAttribute("src", data.data[i].image);
-        articleEl.appendChild(articleImage);
-
-        articleEl.appendChild(articleStart);
-        articleEl.appendChild(articleStop);
+        articleImage.setAttribute()
+        if (data.data[i].image !== null) {
+            articleEl.appendChild(articleImage)
+        } 
+        
+        let buttonDivEl =document.createElement("div")
+        buttonDivEl.appendChild(articleStart)
+        buttonDivEl.appendChild(articleStop)
+        articleEl.appendChild(buttonDivEl)
 
         // speaker button dynamically generates
         // event listener for read information
@@ -175,10 +180,29 @@ function displayArticles(data) {
 }
 
 function showHistory(history) {
+    let searchHistoryEl= document.getElementById("search-history")
+    searchHistoryEl.innerHTML=""
 for (let i=0; i<history.length; i++){
+    let searchedInputEl = document.createElement("button")
+    searchHistoryEl.appendChild(searchedInputEl)
+    searchHistoryEl.setAttribute("style", "display:flex-column")
+    searchedInputEl.classList.add("search-button")
+    searchedInputEl.textContent= `${history[i].source} ${history[i].topic} ${history[i].text}`
+    searchedInputEl.style.display ="block"
+    searchedInputEl.addEventListener("click", function(){
+        buildUrl(history[i].source, history[i].topic, history[i].text)
+    })
+}
+}
 
+function clearHistory() {
+    localStorage.clear()
+
+    history=[]
+
+    showHistory(history)
 }
-}
+
 
 
 // Event Listeners
@@ -193,7 +217,8 @@ rateEl.addEventListener("click", setVolumes);
 // Sorts the way news is presented
 sortChoice.addEventListener("click", sortList);
 
-
+// clears local storage and search history DOM
+clearBtn.addEventListener("click", clearHistory)
 showHistory(history)
 
 
