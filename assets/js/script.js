@@ -139,6 +139,7 @@ function displayArticles(data) {
     for (i = 0; i < data.data.length; i++) {
 
         let articleEl = document.createElement("div");
+        // margin doesnt work
         articleEl.setAttribute("class", "border margin-bottom-2")
         articleContainer.appendChild(articleEl);
 
@@ -149,6 +150,7 @@ function displayArticles(data) {
         articleStart.textContent = "Start Article"
         articleStop.textContent = "Stop Article"
         nextBtn.textContent = "Skip"
+        // margin doesnt work here either 
         articleStart.setAttribute("class", "button radius bordered shadow margin-2");
         articleStop.setAttribute("class", "button radius bordered shadow margin-2");
         nextBtn.setAttribute("class", "button radius bordered shadow margin-2 primary");
@@ -162,15 +164,16 @@ function displayArticles(data) {
             responsiveVoice.speak(`${articleTitle.textContent} ${articleDescription.textContent} ${articleSource.textContent}`);
         })
         articleStop.addEventListener("click", function () {
-            responsiveVoice.cancel();
-        }) // next btn doesnt skip because doesnt read title
+            responsiveVoice.pause();
+        }) 
+        // next btn doesnt skip because doesnt read title
         nextBtn.addEventListener("click", function(){ 
             console.log("skip")
             responsiveVoice.cancel()
-            //i+=1
             responsiveVoice.speak(`${data.data[i+1].title} 
             Article description is ${data.data[i+1].description}
             The source of the article comes from ${data.data[i+1].source}`)
+            console.log(data.data[i+1].title)
         })
 
         let articleDescription = document.createElement("p");
