@@ -106,42 +106,39 @@ function displayArticles(data) {
         let articleTitle = document.createElement("h3");
         let articleStop = document.createElement("button");
         let articleStart = document.createElement("button");
+        let articleDescription = document.createElement("p");
+        let articleUrl = document.createElement("a");
+        let articleSource = document.createElement("p");
+        let articleImage = document.createElement("img");
 
         articleStart.classList.add("button");
-        articleStop.classList.add("button");
-
         articleStart.textContent = "Start Article"
+        articleStop.classList.add("button");
         articleStop.textContent = "Stop Article"
 
         articleTitle.textContent = data.data[i].title;
-
-        responsiveVoice.speak(data.data[i].title);
+        responsiveVoice.speak(articleTitle.textContent);
         articleStart.addEventListener("click", function() {
-            responsiveVoice.speak(`${articleTitle.textContent} ${articleDescription.textContent} ${articleSource.textContent}`);
+            responsiveVoice.speak(`${articleTitle.textContent}. 
+            The article description is: ${articleDescription.textContent}. 
+            The source of the article comes from: ${articleSource.textContent}`);
         })
         articleStop.addEventListener("click", function() {
             responsiveVoice.cancel();
         })
         articleEl.appendChild(articleTitle);
         
-
-        let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
-        // responsiveVoice.speak("Article description is");
-        responsiveVoice.speak(`Article description is ${data.data[i].description}`);
+        responsiveVoice.speak(`The article description is ${articleDescription.textContent}`);
         articleEl.appendChild(articleDescription);
 
-        let articleUrl = document.createElement("a");
         articleUrl.text = data.data[i].url;
         articleEl.appendChild(articleUrl);
 
-        let articleSource = document.createElement("p");
         articleSource.textContent = data.data[i].source;
-        responsiveVoice.speak("The source of the article comes from");
-        responsiveVoice.speak(data.data[i].source);
+        responsiveVoice.speak(`The source of the article comes from ${articleSource.textContent}`);
         articleEl.appendChild(articleSource);
 
-        let articleImage = document.createElement("img");
         articleImage.setAttribute("src", data.data[i].image);
         articleEl.appendChild(articleImage);
 
