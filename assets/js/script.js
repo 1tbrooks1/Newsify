@@ -177,7 +177,7 @@ function displayArticles(data) {
         })
         // *****next btn doesnt skip
         nextBtn.addEventListener("click", function (event) {
-            for (i; i < data.data.length; i++) {
+            for (i=i+0; i < data.data.length; i++) {
                 if (event) {
                     continue;
                 }
