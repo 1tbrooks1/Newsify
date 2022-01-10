@@ -140,7 +140,7 @@ function displayArticles(data) {
 
         let articleEl = document.createElement("div");
         // margin doesnt work
-        articleEl.setAttribute("class", "border margin-bottom-2")
+        articleEl.setAttribute("class", "each-article border margin-bottom-2")
         articleContainer.appendChild(articleEl);
 
         let articleTitle = document.createElement("h3");
