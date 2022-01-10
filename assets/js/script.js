@@ -14,6 +14,7 @@ let pitchEl = document.querySelector(".pitch-rate");
 let rateEl = document.querySelector(".rate");
 let sortChoice = document.querySelector(".dropdown-sort");
 let clearBtn = document.querySelector(".clear-button")
+// speaker html elements for voice, volume, pitch rate 
 
 // global variables
 let history = JSON.parse(localStorage.getItem("inputs")) || []
@@ -88,13 +89,6 @@ function formSubmitHandler(event) {
 
 
         } // otherwise, show history anyways
-        // else if (sort) { // Sorts the way news is presented: ***not refreshing display on click
-        //     sortChoice.addEventListener("click", function () {
-
-        //         buildUrl(outlet, category, language, sort)
-
-        //     })
-        // }
         else {
             showHistory(history)
 
@@ -151,13 +145,14 @@ function displayArticles(data) {
         articleStop.textContent = "Stop Article"
         nextBtn.textContent = "Skip"
         // margin doesnt work here either 
-        articleStart.setAttribute("class", "button radius bordered shadow margin-2");
-        articleStop.setAttribute("class", "button radius bordered shadow margin-2");
-        nextBtn.setAttribute("class", "button radius bordered shadow margin-2 primary");
+        articleStart.setAttribute("class", "button radius bordered shadow margin-horizontal-2");
+        articleStop.setAttribute("class", "button radius bordered shadow margin-horizontal-2");
+        nextBtn.setAttribute("class", "button radius bordered shadow margin-horizontal-2 primary");
 
         articleTitle.textContent = data.data[i].title;
         articleEl.appendChild(articleTitle);
 
+        //** grab speaker html values and plug them into responseVoice.speak */
         responsiveVoice.speak(data.data[i].title);
 
         articleStart.addEventListener("click", function () {
