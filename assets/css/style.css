@@ -89,7 +89,7 @@ nav {
 
 .slider {
     -webkit-appearance: none;
-    width: auto;
+    width: 75%;
     height: 10px;
     background: var(--tertiary);
     outline: none;
