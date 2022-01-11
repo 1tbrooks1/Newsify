@@ -195,6 +195,19 @@ main {
     border-radius: 0.3rem;
 }
 
+.history-button {
+    width: 100%;
+    border: 2px solid  var(--secondary);
+    background-color: var(--primary);
+    color: white;
+    font-size: large;
+    padding: 5px;
+    border-radius: 0.3rem;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .article-section{
     padding: 15px 0 0 15px;
 }

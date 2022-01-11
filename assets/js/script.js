@@ -9,14 +9,20 @@
 // DOM variables
 let articleContainer = document.querySelector(".article-section");
 let searchBtn = document.getElementById("search-button");
+let sortChoice = document.querySelector(".dropdown-sort");
+let clearBtn = document.querySelector(".clear-button")
+let keywordEL = document.querySelector(".keyword")
+let excludedEl = document.querySelector(".exclude")
+// speaker html elements for voice, volume, pitch rate 
+let speakerVoiceEl = document.querySelector("dropdown")
 let volumeEl = document.querySelector(".speaker-volume");
 let pitchEl = document.querySelector(".pitch-rate");
 let rateEl = document.querySelector(".rate");
-let sortChoice = document.querySelector(".dropdown-sort");
-let clearBtn = document.querySelector(".clear-button")
+
 
 // global variables
 let history = JSON.parse(localStorage.getItem("inputs")) || []
+//add keyword and exlcuded
 let userInputs = { source: "", topic: "", text: "", order: "" }
 
 // tied to an event listener at the bottom, operational
@@ -26,32 +32,25 @@ let userInputs = { source: "", topic: "", text: "", order: "" }
 //     buildUrl(outlet, category, language, sort)
 // }
 
-/*function getDate() {
-    let from = document.querySelector("#from-date");
-    let until = document.querySelector("#to-date");
-    let date1 = from.value;
-    let date2 = until.value;
-    buildUrl(date1, date2);
-}*/
 
-// operational
-function setVolumes() {
-    speakerVolume = volumeEl.value;
-    console.log("volume: " + speakerVolume);
-    pitchRate = pitchEl.value;
-    console.log("pitch: " + pitchRate);
-    speedRate = rateEl.value;
-    console.log("rate: " + speedRate);
+// // operational
+// function setVolumes() {
+//     speakerVolume = volumeEl.value;
+//     console.log("volume: " + speakerVolume);
+//     pitchRate = pitchEl.value;
+//     console.log("pitch: " + pitchRate);
+//     speedRate = rateEl.value;
+//     console.log("rate: " + speedRate);
 
-    speakerSettings(speakerVolume, pitchRate, speedRate);
-}
+//     speakerSettings(speakerVolume, pitchRate, speedRate);
+// }
 
-// not working at the moment
-function speakerSettings(sVolume, sPitch, sRate) {
-    console.log(sVolume, sPitch, sRate);
-    responsiveVoice.speak({ volume: sVolume }, { pitch: sPitch }, { rate: sRate });
-    console.log(volume.value, pitch.value, rate.value);
-}
+// // not working at the moment
+// function speakerSettings(sVolume, sPitch, sRate) {
+//     console.log(sVolume, sPitch, sRate);
+//     responsiveVoice.speak({ volume: sVolume }, { pitch: sPitch }, { rate: sRate });
+//     console.log(volume.value, pitch.value, rate.value);
+// }
 
 function formSubmitHandler(event) {
     event.preventDefault()
@@ -63,15 +62,17 @@ function formSubmitHandler(event) {
     let languageChoice = document.querySelector(".dropdown-language");
     let language = languageChoice.value;
     let sort = sortChoice.value
+    // let keyword = keywordEL.value.trim()
+    // let excluded= excludedEl.value.trim()
 
-
-
-    if (outlet || category || language || sort) {
+    if (outlet || category || language || sort) // add keyword and excluded 
+    {
         // if input combinations are unique, set to localstorage and show in history DOM
         if (userInputs.source !== outlet ||
             userInputs.topic !== category ||
             userInputs.text !== language ||
-            userInputs.order !== sort) {
+            userInputs.order !== sort
+             ) {
 
             userInputs = {
                 source: outlet,
@@ -84,17 +85,11 @@ function formSubmitHandler(event) {
             showHistory(history)
             //sortList(outlet, category, language)
 
+            //add keyword and exlcuded
             buildUrl(outlet, category, language, sort)
 
 
         } // otherwise, show history anyways
-        // else if (sort) { // Sorts the way news is presented: ***not refreshing display on click
-        //     sortChoice.addEventListener("click", function () {
-
-        //         buildUrl(outlet, category, language, sort)
-
-        //     })
-        // }
         else {
             showHistory(history)
 
@@ -103,10 +98,10 @@ function formSubmitHandler(event) {
 
 }
 
-
+//add keyword and exlcuded
 function buildUrl(outlet, category, language, sort) {
     const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
-    // its saying sort comes up undefined
+    // its saying sort comes up undefined ** add keyword and excluded
     let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&limit=5&access_key=${apiKey}`;
 
     fetch(apiUrl)
@@ -137,44 +132,62 @@ function displayArticles(data) {
     // to refresh the display with every search
     articleContainer.innerHTML = ""
     for (i = 0; i < data.data.length; i++) {
+        // let next = 
+        // let sVolume = volumeEl.value;
+        // let sPitch = pitchEl.value;
+        // let sRate = rateEl.value;
+
+        // tried to grab object from api to change values dynamically but doesnt work properly
+        // SpeechSynthesisUtterance.voiceURI = // voice dropdwon value
+        // SpeechSynthesisUtterance.volume = sVolume
+        // SpeechSynthesisUtterance.pitch = sPitch
+        // SpeechSynthesisUtterance.rate = sRate
 
         let articleEl = document.createElement("div");
-        // margin doesnt work
-        articleEl.setAttribute("class", "each-article border margin-bottom-2")
+        // ******margin doesnt work
+        articleEl.setAttribute("class", "border margin-bottom-2")
         articleContainer.appendChild(articleEl);
 
         let articleTitle = document.createElement("h3");
         let articleStop = document.createElement("button");
         let articleStart = document.createElement("button");
-        let nextBtn= document.createElement("button")
+        // let nextBtn = document.createElement("button")
         articleStart.textContent = "Start Article"
         articleStop.textContent = "Stop Article"
-        nextBtn.textContent = "Skip"
-        // margin doesnt work here either 
-        articleStart.setAttribute("class", "button radius bordered shadow margin-2");
-        articleStop.setAttribute("class", "button radius bordered shadow margin-2");
-        nextBtn.setAttribute("class", "button radius bordered shadow margin-2 primary");
+        // nextBtn.textContent = "Skip"
+
+        // ****margin doesnt work here either 
+        articleStart.setAttribute("class", "button radius bordered shadow margin-horizontal-2");
+        articleStop.setAttribute("class", "button radius bordered shadow margin-horizontal-2");
+        nextBtn.setAttribute("class", "button radius bordered shadow margin-horizontal-2 primary");
 
         articleTitle.textContent = data.data[i].title;
         articleEl.appendChild(articleTitle);
 
-        responsiveVoice.speak(data.data[i].title);
+        //**** grab speaker html values and plug them into responseVoice.speak , not working dynamically*/
+        responsiveVoice.speak(`${data.data[i].title}`);
 
         articleStart.addEventListener("click", function () {
-            responsiveVoice.speak(`${articleTitle.textContent} ${articleDescription.textContent} ${articleSource.textContent}`);
+            responsiveVoice.speak(`${articleTitle.textContent} 
+            ${articleDescription.textContent} ${articleSource.textContent}`)
+            console.log(i) // logging 5????
         })
         articleStop.addEventListener("click", function () {
             responsiveVoice.pause();
-        }) 
-        // next btn doesnt skip because doesnt read title
-        nextBtn.addEventListener("click", function(){ 
-            console.log("skip")
-            responsiveVoice.cancel()
-            responsiveVoice.speak(`${data.data[i+1].title} 
-            Article description is ${data.data[i+1].description}
-            The source of the article comes from ${data.data[i+1].source}`)
-            console.log(data.data[i+1].title)
         })
+        // *****next btn doesnt skip
+        // nextBtn.addEventListener("click", function (event) {
+        //     // for (i=i+0; i < data.data.length; i++) {
+        //         if (event) {
+        //             console.log(event)
+        //         }
+
+        //     // }
+        //     // responsiveVoice.speak(`${data.data[i].title} 
+        //     // Article description is ${data.data[i].description}
+        //     // The source of the article comes from ${data.data[i].source}`)
+
+        // })
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
@@ -215,11 +228,13 @@ function showHistory(history) {
         let searchedInputEl = document.createElement("button")
         searchHistoryEl.appendChild(searchedInputEl)
         searchHistoryEl.setAttribute("style", "display:flex-column")
-        searchedInputEl.classList.add("search-button")
+        searchedInputEl.classList.add("history-button")
+        // ***add keyword and excluded properties
         searchedInputEl.textContent = `${i + 1}.${history[i].source} ${history[i].topic} ${history[i].text}`
         searchedInputEl.style.display = "block"
         // fetch the api with old searches
         searchedInputEl.addEventListener("click", function () {
+            // ***add keyword and excluded properties
             buildUrl(history[i].source, history[i].topic, history[i].text, history[i].order)
         })
     }
@@ -240,9 +255,9 @@ function clearHistory() {
 searchBtn.addEventListener("click", formSubmitHandler);
 
 // Sets volume settings
-volumeEl.addEventListener("click", setVolumes);
-pitchEl.addEventListener("click", setVolumes);
-rateEl.addEventListener("click", setVolumes);
+// volumeEl.addEventListener("click", setVolumes);
+// pitchEl.addEventListener("click", setVolumes);
+// rateEl.addEventListener("click", setVolumes);
 
 
 // clears local storage and search history DOM
