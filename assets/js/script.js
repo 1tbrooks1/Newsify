@@ -132,7 +132,7 @@ function displayArticles(data) {
     // to refresh the display with every search
     articleContainer.innerHTML = ""
     for (i = 0; i < data.data.length; i++) {
-
+        // let next = 
         // let sVolume = volumeEl.value;
         // let sPitch = pitchEl.value;
         // let sRate = rateEl.value;
@@ -151,10 +151,10 @@ function displayArticles(data) {
         let articleTitle = document.createElement("h3");
         let articleStop = document.createElement("button");
         let articleStart = document.createElement("button");
-        let nextBtn = document.createElement("button")
+        // let nextBtn = document.createElement("button")
         articleStart.textContent = "Start Article"
         articleStop.textContent = "Stop Article"
-        nextBtn.textContent = "Skip"
+        // nextBtn.textContent = "Skip"
 
         // ****margin doesnt work here either 
         articleStart.setAttribute("class", "button radius bordered shadow margin-horizontal-2");
@@ -176,18 +176,18 @@ function displayArticles(data) {
             responsiveVoice.pause();
         })
         // *****next btn doesnt skip
-        nextBtn.addEventListener("click", function (event) {
-            for (i=i+0; i < data.data.length; i++) {
-                if (event) {
-                    continue;
-                }
+        // nextBtn.addEventListener("click", function (event) {
+        //     // for (i=i+0; i < data.data.length; i++) {
+        //         if (event) {
+        //             console.log(event)
+        //         }
 
-            }
-            // responsiveVoice.speak(`${data.data[i].title} 
-            // Article description is ${data.data[i].description}
-            // The source of the article comes from ${data.data[i].source}`)
+        //     // }
+        //     // responsiveVoice.speak(`${data.data[i].title} 
+        //     // Article description is ${data.data[i].description}
+        //     // The source of the article comes from ${data.data[i].source}`)
 
-        })
+        // })
 
         let articleDescription = document.createElement("p");
         articleDescription.textContent = data.data[i].description;
