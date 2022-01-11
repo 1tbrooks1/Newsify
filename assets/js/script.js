@@ -100,7 +100,7 @@ function formSubmitHandler(event) {
 
 //add keyword and exlcuded
 function buildUrl(outlet, category, language, sort) {
-    const apiKey = "afe8ca7e3a00ff67fd299fec29cce5c7";
+    const apiKey = "50db9deb9962e4e61015af3116dce036";
     // its saying sort comes up undefined ** add keyword and excluded
     let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&limit=5&access_key=${apiKey}`;
 
