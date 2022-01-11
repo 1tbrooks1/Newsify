@@ -208,6 +208,25 @@ main {
     flex-wrap: wrap;
 }
 
+.img {
+    height: 30%;
+    width: 40%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    text-decoration: underline;
+    margin-left: 10px;
+}
+.text {
+    margin-left: 10px;
+}
+.div {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
 .article-section{
     padding: 15px 0 0 15px;
 }
