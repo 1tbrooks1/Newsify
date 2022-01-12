@@ -67,6 +67,6 @@ SO THAT I CAN stay aware and up-to-date with what is happening in the world.
 <a name= "URL"></a>
 ## URL
 
-Deployed App: 
+Deployed App: https://yoowook1207.github.io/Newsify/
 
-Repo:
+Repo: https://github.com/yoowook1207/Newsify.git
