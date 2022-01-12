@@ -9,7 +9,9 @@
 
 <a name= "desc"></a>
 ## 
-Proof of concept for news accessibility app whose purpose is to expand news consumption habits for people with difficulties with sight/reading, lack of patience for reading the news, and the desire to have a news feed not governed by algorithms but by their input choices
+Proof of concept for news accessibility app whose purpose is to expand news consumption habits for people with difficulties with sight/reading, lack of patience for reading the news, and the desire to have a news feed not governed by algorithms but by their input choices.
+
+Uses [MediaStack API's Free Plan](https://mediastack.com/documentation) to fetch news data and the free [ResponsiveVoice API](https://responsivevoice.org/api/) to read the articles aloud.
 
 <a name="process"> </a>
 ## 
