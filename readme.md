@@ -1,5 +1,5 @@
 # Newsify
-** PLEASE NOTE: This is a proof of concept for a future paid subscription app. As a result,  because we used the free plan for the news api we chose, it does not support https fetch requests. because github pages only supports https, in order to get the deployed app to work, you need to change the security settings in your browser to allow insecure content. we apologize for this inconvenience, but we plan to improve this in our future development by making it a paid subscription app.
+** PLEASE NOTE: This is a proof of concept for a future paid subscription app. As a result,  because we used the free plan for the news api we chose, it does not support https fetch requests. Because github pages only supports https, in order to get the deployed app to work, you need to change the security settings in your browser to allow insecure content. We apologize for this inconvenience, but we plan to improve this in our future development by making it a paid subscription app.
 
 # Table of Contents
 * [Project Description](#desc)
