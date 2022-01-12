@@ -19,6 +19,16 @@ Uses [MediaStack API's Free Plan](https://mediastack.com/documentation) to fetch
 
 
 <a name= "usage"></a>
+## User Story
+
+```
+AS A person who struggles with vision and/or reading, having the time or patience to read the news, or who is frustrated with news feed algorithms
+
+I WANT TO be able to listen to the news that I like 
+
+SO THAT I CAN stay aware and up-to-date with what is happening in the world.
+```
+
 ## Acceptance Criteria
 
 ```
@@ -54,16 +64,6 @@ THEN the customized voice reads the articles out to me
 
 WHEN I hit the next button
 THEN the speaker skips the current article and goes to the next one
-```
-
-## User Story
-
-```
-AS A person who struggles with vision and/or reading, having the time or patience to read the news, or who is frustrated with news feed algorithms
-
-I WANT TO be able to listen to the news that I like 
-
-SO THAT I CAN stay aware and up-to-date with what is happening in the world.
 ```
 
 <a name= "URL"></a>
