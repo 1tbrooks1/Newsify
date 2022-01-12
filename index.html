@@ -18,40 +18,76 @@
     <h1 class="app-title">NEWSIFY <small>the most recent news collector</small></h1>
     </div>
     <nav>
-      <button class="sort-button" data-open="Sort-Modal">☰</button>
       <button class="speaker-button" data-open="Audio-Control-Modal">🔊</button>
+        <select class= "dropdown-sort">
+          <option  class ="desc" value="published_desc">Published Descending</option>
+          <option  class ="asc" value="published_asc">Published Ascending</option>
+          <option  class ="pop" value="popularity">Popularity</option>
+        </select>
+      <label class="sort-label">Sort:</label>
     </nav>
-      <div class= "reveal control-modal" id="Sort-Modal" data-reveal>
-        <div>Article sorting control panel</div>
-        <div class="control-panel">
-            <input type="radio" id="Alph-Asc" class="radio-btn">
-            <label class="sort-label">Alphabetical Ascending</label>
-            <input type="radio" id="Alph-Des" class="radio-btn">
-            <label class="sort-label">Alphabetical Descending</label>
-            <input type="radio" id="Pub-Des" class="radio-btn">
-            <label class="sort-label">Published Ascending</label>
-            <input type="radio" id="Pub-Des" class="radio-btn">
-            <label class="sort-label">Published Descending</label>
-        </div>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
       <div class= "reveal control-modal" id="Audio-Control-Modal" data-reveal>
         <div>Article reader audio control panel</div>
-        <div class= "control-panel">
-          <div>
-            <label>Volume:</label>
-            <input type="range" min="0" max="10" class="slider" id="volume">
+        <div class= "grid-x control-panel">
+          <div class="cell speaker-voice">
+            <select>Speaker Voice
+                <option>UK English Female</option>
+                <option>UK English Male</option>
+
+                <option>US English Female</option>
+                <option>US English Male</option>
+
+                <option>Arabic Male</option>
+                <option>Arabic Male</option>
+
+                <option>German Female</option>
+                <option>German Male</option>
+
+                <option>Spanish Female</option>
+                <option>Spanish Male</option>
+
+                <option>French Female</option>
+                <option>French Male</option>
+
+                <option>Hindi Female</option>
+                <option>Hindi Male</option>
+
+                <option>Italian Female</option>
+                <option>Italian male</option>
+
+                <option>Dutch Female</option>
+                <option>Dutch Male</option>
+
+                <option>Norwegian Female</option>
+                <option>Norwegian male</option>
+
+                <option>Portuguese Female</option>
+                <option>Portuguese male</option>
+
+                <option>Russian Female</option>
+                <option>Russian Male</option>
+
+                <option>Swedish Female</option>
+                <option>Swedish Male</option>
+
+                <option>Chinese Female</option>
+                <option>Chinese Male</option>
+
+            </select>
           </div>
-          <div>
-            <label>Pitch:</label>
-            <input type="range" min="0" max="10" class="slider" id="pitch">
-          </div>
-          <div>  
-          <label>Rate:</label>
-          <input type="range" min="0" max="10" class="slider" id="rate">
+          <div class="controls cell grid-x">
+            <div class="cell small-4">
+              <label>Speaker Volume:</label>
+              0<input type="range" min="0" step="0.1" max="1" class="slider speaker-volume" id="volume">1
+            </div>
+            <div class="cell small-4">
+              <label>Pitch:</label>
+              0<input type="range" min="0" step ="0.5" max="2" class="slider pitch-rate" id="pitch">2
+            </div>
+            <div class="cell small-4">  
+            <label>Rate:</label>
+            0<input type="range" min="0" max="1.5" step="0.1" class="slider rate" id="rate">1.5
+            </div>
           </div>
         </div>
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -77,10 +113,13 @@
             <option value="technology">Technology</option>
           </select>
 
-          <label>Date:</label>
-          <input type="date" id="from-date"><input type="date" id="to-date">
+          <label>Keywords:</label>
+          <input type="text" id="keywords" placeholder="ex) GW coding bootcamp">
 
-          <label>Press name:</label>
+          <label>Excluding Keywords:</label>
+          <input type="text" id="excluding" placeholder="ex) GW coding bootcamp">
+
+          <label>Source:</label>
           <input type="text" id="press-names" placeholder="Press Name">
 
           <label>Language:</label>
@@ -104,8 +143,9 @@
         </div>
       </form>
       <section class= "card user-presets">
-        <div class= "card-header">USER PRESETS</div>
-        <div class= "card-body" id="user-preset">
+        <div class= "card-header">Search History</div>
+        <button class ="clear-button">Clear History</button>
+        <div class= "card-body" id="search-history">
         <!-- local storage here -->
         </div>
       </section>
@@ -115,19 +155,24 @@
       <!-- articles go here -->
 
     </contents>
-   <div class ="modal" id="no-articles">
-      <div class = "modal-content">
-        <button class="close" id="no-articles-btn">&times;</button>
-        <p>Error: No articles found!</p>
-      </div>
-   </div>
-    <!-- two modals for the alerts / input wrong & network error -->
+  <div class ="modal modal-content reveal" id="no-articles" data-reveal>
+        <button class="close-button" data-close id="no-articles-btn">&times;</button>
+        <p>No articles found!</p>
+  </div>
+  <div class ="modal modal-content reveal" id="network-error" data-reveal>
+      <button class="close" data-close id="network-error-btn">&times;</button>
+      <p>Error: 404 Page not found!</p>
+  </div>
+  <div class ="modal modal-content reveal" id="wrong-input" data-reveal>
+      <button class="close" data-close id="wrong-input-btn">&times;</button>
+      <p>Error: Wrong Input (Please check the news press name!)</p>
+  </div>
   </main>
 
-  <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_UNIQUE_KEY"></script>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=msyx2oDY"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
-  <script src="./assets/js/script.js"></script>
+  <script src="assets/js/script.js"></script>
   <script>
     $(document).foundation();
   </script>
