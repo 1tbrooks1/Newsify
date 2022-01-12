@@ -153,8 +153,7 @@ function displayArticles(data) {
 
         // to prevent page clutter, remove null images
         if (data.data[i].image !== null || data.data[i].image !== ""
-            || data.data[i].image !== `${null}`
-            || data.data[i].image !== undefined) {
+            || articleImage.src===true ) {
             articleEl.appendChild(articleImage)
         }
         // to make button elements display block
