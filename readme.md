@@ -59,7 +59,7 @@ THEN the speaker skips the current article and goes to the next one
 ## User Story
 
 ```
-AS A person who struggled with vision and/or reading, or having the time or patience to read the news
+AS A person who struggles with vision and/or reading, having the time or patience to read the news, or who is frustrated with news feed algorithms
 
 I WANT TO be able to listen to the news that I like 
 
