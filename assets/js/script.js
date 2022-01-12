@@ -63,7 +63,7 @@ function formSubmitHandler(event) {
 function buildUrl(outlet, category, language, sort, keyword, excluded) {
     const apiKey = "50db9deb9962e4e61015af3116dce036";
 
-    let apiUrl = `http://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&keywords=${keyword} -${excluded}&limit=5&access_key=${apiKey}`;
+    let apiUrl = `https://api.mediastack.com/v1/news?sources=${outlet}&categories=${category}&languages=${language}&sort=${sort}&keywords=${keyword} -${excluded}&limit=5&access_key=${apiKey}`;
 
     fetch(apiUrl)
         .then(function (response) {
