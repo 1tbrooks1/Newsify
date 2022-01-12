@@ -136,7 +136,8 @@ function displayArticles(data) {
         articleEl.appendChild(articleDescription);
 
         let articleUrl = document.createElement("a");
-        articleUrl.textContent = `URL: ${data.data[i].url}`;
+        articleUrl.setAttribute("href", `${data.data[i].url}`)
+        articleUrl.textContent= `${data.data[i].url}`
         articleUrl.setAttribute("class", "text")
         articleEl.appendChild(articleUrl);
 
@@ -148,12 +149,11 @@ function displayArticles(data) {
         articleEl.appendChild(articleSource);
 
         let articleImage = document.createElement("img");
-        articleImage.setAttribute("src", data.data[i].image);
+        articleImage.setAttribute("src", `${data.data[i].image}`);
         articleImage.setAttribute("class", "img")
 
         // to prevent page clutter, remove null images
-        if (data.data[i].image !== null || data.data[i].image !== ""
-            || articleImage.src===true ) {
+        if (data.data[i].image !== null || articleImage.src===true ) {
             articleEl.appendChild(articleImage)
         }
         // to make button elements display block
