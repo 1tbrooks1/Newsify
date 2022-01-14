@@ -3,7 +3,6 @@
 
 # Table of Contents
 * [Project Description](#desc)
-* [How I Made It](#process)
 * [Usage](#usage)
 * [URL](#URL)
 
