@@ -48,9 +48,8 @@ THEN I see my saved search persist on the page below the input jumbotron
 
 ```
 
-Here is how the app looks and functions:
+Here is a [video](https://drive.google.com/file/d/1OyTwCLf2D9ZBf8pwcW4i0mMO0XDTSR9D/preview) how the app looks, functions, and sounds.
 
-<iframe src="https://drive.google.com/file/d/1OyTwCLf2D9ZBf8pwcW4i0mMO0XDTSR9D/preview" width="640" height="480"></iframe>
 
 ## Wish list
 
